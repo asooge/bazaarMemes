@@ -30,6 +30,9 @@ const clickSignOut = function () {
   store.status.reset()
   store.status.signOut = true
   console.log('clickSignOut works')
+  api.signOut()
+    .then(ui.onSignOutSuccess)
+    .catch(ui.onSignOutFailure)
 }
 const clickChangePass = function () {
   store.status.reset()
@@ -53,6 +56,11 @@ const onSubmit = function (event) {
     api.signUp(formData)
       .then(ui.onSignUpSuccess)
       .catch(ui.onSignUpFailure)
+  } else if (store.status.changePass && $('#old-pass').val() && $('#new-pass').val()) {
+    delete formData.credentials
+    api.changePassword(formData)
+      .then(ui.onChangePasswordSuccess)
+      .catch(ui.onChangePasswordFailure)
   }
 }
 
