@@ -48,6 +48,11 @@ const onSubmit = function (event) {
     api.signIn(formData)
       .then(ui.onSignInSuccess)
       .catch(ui.onSignInFailure)
+  } else if (store.status.signUp && $('#email').val() && $('#password').val() && $('#password-confirm').val()) {
+    delete formData.passwords
+    api.signUp(formData)
+      .then(ui.onSignUpSuccess)
+      .catch(ui.onSignUpFailure)
   }
 }
 

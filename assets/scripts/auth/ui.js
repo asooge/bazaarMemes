@@ -7,9 +7,18 @@ const onSignInSuccess = function (formData) {
   console.log(store)
 }
 
+const onSignUpSuccess = function (formData) {
+  $('#message-display').text(`sign up success: ${formData.user.email}`).css('font-weight', 'bold')
+}
+
+const onSignUpFailure = function () {
+  $('#message-display').text(`sign up failed`)
+  $('#user-auth')[0].reset()
+}
 
 
 
 module.exports = {
-  onSignInSuccess
+  onSignInSuccess,
+  onSignUpSuccess
 }
