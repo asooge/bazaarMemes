@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>bazaarMemes</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,42 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Welcome to Bazaar Memes</h1>
+      <p>Buy, sell, trade, or steal.</p>
+      <p>Your one-stop shop for memes</p>
+
+      <section class="sign-in">
+        <p id="user-info"></p>
+        <p id="message-display">sign in or sign up to start memeing</p>
+        <button id=sign-up class="btn btn-info clear-auth">sign up</button>
+        <button id=sign-in class="btn btn-info clear-auth">sign in</button>
+        <button id=change-pass class="btn btn-info clear-auth">change password</button>
+        <button id=sign-out class="btn btn-info clear-auth">sign out</button>
+
+        <br>
+        <form id="user-auth">
+          <div id="enter-email" class="clear-auth">
+            <label for="email">email:</label>
+            <input id="email" type="email" name="credentials[email]" placeholder="user@email.com">
+          </div>
+          <div id="enter-password" class="clear-auth">
+            <label for="password">password:</label>
+            <input id="password" type="password" name="credentials[password]" placeholder="user password">
+          </div>
+          <div id="enter-confirm-pass" class="clear-auth">
+            <label for="password_confirm">confirm password:</label>
+            <input id="password-confirm" type="password" name="credentials[password_confirmation]" placeholder="confirm password">
+          </div>
+          <div id="enter-old" class="clear-auth">
+            <label for="old-pass">old pass:</label>
+            <input id="old-pass" type="password" name="passwords[old]" placeholder="old password">
+          </div>
+          <div id="enter-new" class="clear-auth">
+            <label for="new-pass">new pass:</label>
+            <input id="new-pass" type="password" name="passwords[new]" placeholder="new password">
+          </div>
+          <button id="submit" class="btn btn-primary clear-auth">submit</button>
+        </form>
+      </section>
     </body>
 </html>
