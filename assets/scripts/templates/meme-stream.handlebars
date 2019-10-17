@@ -1,0 +1,15 @@
+{{#each memes as |meme|}}
+  {{log meme}}
+  <div class='meme' data-id="{{meme.id}}">
+
+    <img class="image" src="{{meme.image}}">
+    <div class = text-contain-top>
+      <span class=text-top>{{meme.text_1}}</span>
+    </div>
+    <div class=text-contain-bottom>
+    <span class=text-bottom>{{meme.text_2}}</span>
+    </div>
+
+  </div>
+
+{{/each}}
