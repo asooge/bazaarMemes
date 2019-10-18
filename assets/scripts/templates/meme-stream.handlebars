@@ -1,21 +1,42 @@
 {{#each memes as |meme|}}
   {{log meme}}
-  <div>
-    <div class='meme' data-id="{{meme.id}}">
 
-      <img class="image" src="{{meme.image}}">
-      <div class = text-contain-top>
-        <span class=text-top>{{meme.text_1}}</span>
-      </div>
-      <div class=text-contain-bottom>
-      <span class=text-bottom>{{meme.text_2}}</span>
-      </div>
+  <div class='meme' data-id="{{meme.id}}">
 
+    <img class="image" id="meme-stream{{meme.id}}" src="{{meme.image}}">
+    <div class = text-contain-top style="font-size:{{meme.font_size_1}}vw">
+      <span class=text-top id="text-top{{meme.id}}">{{meme.text_1}}</span>
+    </div>
+    <div class=text-contain-bottom style="font-size:{{meme.font_size_2}}vw">
+    <span class=text-bottom id="text-bottom{{meme.id}}">{{meme.text_2}}</span>
     </div>
 
-    <div class='meme'>
-      <button data-id="{{meme.id}}" class='delete-meme btn btn-danger'>Delete meme</button>
-      <button data-id="{{meme.id}}" class='update-meme btn btn-warning'>Update meme</button>
-    </div>
   </div>
+
+  <div class='meme'>
+    <button data-id="{{meme.id}}" class='delete-meme btn btn-danger'>Delete meme</button>
+    <button data-id="{{meme.id}}" class='update-meme btn btn-warning'>Update meme</button>
+  </div>
+  <div class='meme' data-id="{{meme.id}}">
+    <h4>Update your meme:</h4>
+    <form id="meme-generator{{meme.id}}">
+      <label for="image-url">image url:</label>
+      <input type="text" name="meme[image]" id="image-url{{meme.id}}" class="image-url" data-id="{{meme.id}}">
+      <br>
+      <label for="top-text">top text:</label>
+      <input type="text" name="meme[text_1]" id="top-text{{meme.id}}" class="top-text" data-id="{{meme.id}}">
+      <br>
+      <label for="top-text-size">top text size:</label>
+      <input type="range" name="meme[font_size_1]" id="top-text-size{{meme.id}}" data-id="{{meme.id}}" class="top-text-size" min="0.5" max="10" step="0.5" value="5">
+      <br>
+      <label for="bottom-text">bottom text:</label>
+      <input type="text" name="meme[text_2]" data-id="{{meme.id}}" id="bottom-text{{meme.id}}" class="bottom-text">
+      <br>
+      <label for="top-text-size">bottom text size:</label>
+      <input type="range" name="meme[font_size_2]" id="bottom-text-size{{meme.id}}" class="bottom-text-size" data-id="{{meme.id}}" min="0.5" max="10" step="0.5" value="5">
+      <button class="btn btn-warning">Finalize</button>
+    </form>
+
+  </div>
+
 {{/each}}

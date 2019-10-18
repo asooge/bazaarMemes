@@ -49,27 +49,27 @@
           <button id="submit" class="btn btn-primary clear-auth">submit</button>
         </form>
       </section>
-      <section class="create-a-meme meme-display">
+      <section class="create-a-meme meme-display" data-id=0>
         <h4>Generate your own meme:</h4>
-        <form id="meme-generator">
+        <form id="meme-generator0" class="meme-generator">
           <label for="image-url">image url:</label>
-          <input type="text" name="meme[image]" id="image-url">
+          <input type="text" name="meme[image]" id="image-url0" class="image-url">
           <br>
           <label for="top-text">top text:</label>
-          <input type="text" name="meme[text_1]" id="top-text">
+          <input type="text" name="meme[text_1]" id="top-text0" class="top-text">
           <br>
           <label for="top-text-size">top text size:</label>
-          <input type="range" name="meme[font_size_1]" id="top-text-size" min="0.5" max="10" step="0.5" value="5">
+          <input type="range" name="meme[font_size_1]" id="top-text-size0" class="top-text-size" min="0.5" max="10" step="0.5" value="5">
           <br>
           <label for="bottom-text">bottom text:</label>
-          <input type="text" name="meme[text_2]" id="bottom-text">
+          <input type="text" name="meme[text_2]" id="bottom-text0" class="bottom-text">
           <br>
           <label for="top-text-size">bottom text size:</label>
-          <input type="range" name="meme[font_size_2]" id="bottom-text-size" min="0.5" max="10" step="0.5" value="5">
+          <input type="range" name="meme[font_size_2]" id="bottom-text-size0" class="bottom-text-size" min="0.5" max="10" step="0.5" value="5">
           <button class="btn btn-warning">Generate meme</button>
         </form>
         <div class = meme>
-          <img class =image id="image-preview" src="https://imgflip.com/s/meme/Grumpy-Cat.jpg">
+          <img class ='image image-preview' id="image-preview" src="https://imgflip.com/s/meme/Grumpy-Cat.jpg">
           <div class = text-contain-top id=top-text-preview-size>
             <span class=text-top id=top-text-preview>Top Text</span>
           </div>
