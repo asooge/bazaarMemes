@@ -46,15 +46,16 @@ const badImagePreview = function (event) {
 const updatePreview = function (event) {
   console.log(event.target.id)
   console.log(event.target.dataset.id)
-  if (event.target.id === 'top-text0') {
-    $('#top-text-preview').text(event.target.value)
-  } else if (event.target.id === 'bottom-text0') {
-    $('#bottom-text-preview').text(event.target.value)
-  } else if (event.target.id === 'top-text-size0') {
+  const dataID = event.target.dataset.id
+  if (event.target.id === `top-text${dataID}`) {
+    $(`#top-text-preview${dataID}`).text(event.target.value)
+  } else if (event.target.id === `bottom-text${dataID}`) {
+    $(`#bottom-text-preview${dataID}`).text(event.target.value)
+  } else if (event.target.id === `top-text-size${dataID}`) {
     $('#top-text-preview-size').css('font-size', `${event.target.value}vw`)
-  } else if (event.target.id === 'bottom-text-size0') {
+  } else if (event.target.id === `bottom-text-size${dataID}`) {
     $('#bottom-text-preview-size').css('font-size', `${event.target.value}vw`)
-  } else if (event.target.id === 'image-url0') {
+  } else if (event.target.id === `image-url${dataID}`) {
     $('#image-preview').attr('src', event.target.value)
   }
 }

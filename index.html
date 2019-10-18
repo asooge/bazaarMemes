@@ -53,28 +53,28 @@
         <h4>Generate your own meme:</h4>
         <form id="meme-generator0" class="meme-generator">
           <label for="image-url">image url:</label>
-          <input type="text" name="meme[image]" id="image-url0" class="image-url">
+          <input type="text" name="meme[image]" id="image-url0" class="image-url" data-id=0>
           <br>
           <label for="top-text">top text:</label>
-          <input type="text" name="meme[text_1]" id="top-text0" class="top-text">
+          <input type="text" name="meme[text_1]" id="top-text0" class="top-text" data-id=0>
           <br>
           <label for="top-text-size">top text size:</label>
-          <input type="range" name="meme[font_size_1]" id="top-text-size0" class="top-text-size" min="0.5" max="10" step="0.5" value="5">
+          <input type="range" name="meme[font_size_1]" id="top-text-size0" data-id=0 class="top-text-size" min="0.5" max="10" step="0.5" value="5">
           <br>
           <label for="bottom-text">bottom text:</label>
-          <input type="text" name="meme[text_2]" id="bottom-text0" class="bottom-text">
+          <input type="text" name="meme[text_2]" id="bottom-text0" data-id=0 class="bottom-text">
           <br>
           <label for="top-text-size">bottom text size:</label>
-          <input type="range" name="meme[font_size_2]" id="bottom-text-size0" class="bottom-text-size" min="0.5" max="10" step="0.5" value="5">
+          <input type="range" name="meme[font_size_2]" id="bottom-text-size0" class="bottom-text-size" data-id=0 min="0.5" max="10" step="0.5" value="5">
           <button class="btn btn-warning">Generate meme</button>
         </form>
         <div class = meme>
           <img class ='image image-preview' id="image-preview" src="https://imgflip.com/s/meme/Grumpy-Cat.jpg">
           <div class = text-contain-top id=top-text-preview-size>
-            <span class=text-top id=top-text-preview>Top Text</span>
+            <span class=text-top id=top-text-preview0>Top Text</span>
           </div>
           <div class=text-contain-bottom id='bottom-text-preview-size'>
-            <span class=text-bottom id="bottom-text-preview">Bottom Text</span>
+            <span class=text-bottom id="bottom-text-preview0">Bottom Text</span>
           </div>
         </div>
       </section>
