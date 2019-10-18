@@ -51,7 +51,7 @@
       </section>
       <section class="create-a-meme meme-display">
         <h4>Generate your own meme:</h4>
-        <form id="generate-meme">
+        <form id="meme-generator">
           <label for="image-url">image url:</label>
           <input type="text" name="image-url" id="image-url">
           <br>
@@ -71,12 +71,12 @@
 
         </form>
         <div class = meme>
-          <img class =image src=https://imgflip.com/s/meme/Grumpy-Cat.jpg>
-          <div class = text-contain-top>
-            <span class=text-top>Top Text</span>
+          <img class =image id="image-preview" src="https://imgflip.com/s/meme/Grumpy-Cat.jpg">
+          <div class = text-contain-top id=top-text-preview-size>
+            <span class=text-top id=top-text-preview>Top Text</span>
           </div>
-          <div class=text-contain-bottom>
-            <span class=text-bottom>Bottom Text</span>
+          <div class=text-contain-bottom id='bottom-text-preview-size'>
+            <span class=text-bottom id="bottom-text-preview">Bottom Text</span>
           </div>
         </div>
       </section>
