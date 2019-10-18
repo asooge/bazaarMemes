@@ -7,7 +7,23 @@ const displayMemes = function (memeData) {
   console.log(store)
   //$('#meme-stream').text(store.memes[0].image)
   //const showMemesHTML = showMemesTemplate({ memes: store.memes })
+  refreshMemes()
+}
+
+const refreshMemes = function () {
+  $('#meme-stream').children().remove()
   $('#meme-stream').append(showMemesTemplate({ memes: store.memes }))
+}
+
+const removeMeme = function (index) {
+  console.log(store)
+  console.log(index)
+  const deletedMeme = store.memes.findIndex((x) => x.id == index)
+  store.memes.splice(deletedMeme)
+  console.log(deletedMeme)
+  console.log(deletedMeme.id)
+  $('#meme-stream').eq(deletedMeme).remove()
+  // refreshMemes()
 }
 
 const badImagePreview = function (event) {
@@ -35,5 +51,6 @@ const updatePreview = function (event) {
 module.exports = {
   displayMemes,
   updatePreview,
-  badImagePreview
+  badImagePreview,
+  removeMeme
 }

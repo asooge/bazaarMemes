@@ -2,11 +2,16 @@ const api = require('./api')
 const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
 
-
 const showMemes = function () {
   api.getMyMemes()
     .then(ui.displayMemes)
+    .then(activateButtons)
     .catch(console.error)
+}
+
+const activateButtons = function () {
+  $('.delete-meme').on('click', deleteMeme)
+  $('.update-meme').on('click', updateMeme)
 }
 
 const generateMeme = function (event) {
@@ -35,6 +40,22 @@ const generateMeme = function (event) {
   api.postMeme(formData)
     .then(console.log)
     .catch(console.error)
+}
+
+const deleteMeme = function (event) {
+  console.log('deleteMeme', event.target.dataset.id)
+  const id = event.target.dataset.id
+  api.destroyMeme(id)
+    .then(api.getMyMemes)
+    .then(ui.displayMemes)
+    .then(activateButtons)
+    //.then(ui.removeMeme(id))
+    //.then(activateButtons())
+    .catch(console.error)
+}
+
+const updateMeme = function (event) {
+  console.log('updateMeme')
 }
 
 module.exports = {

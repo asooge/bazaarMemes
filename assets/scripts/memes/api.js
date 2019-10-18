@@ -33,8 +33,19 @@ const updateMeme = function (memeData) {
   })
 }
 
+const destroyMeme = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/memes/' + id,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'DELETE'
+  })
+}
+
 module.exports = {
   getMyMemes,
   postMeme,
-  updateMeme
+  updateMeme,
+  destroyMeme
 }
