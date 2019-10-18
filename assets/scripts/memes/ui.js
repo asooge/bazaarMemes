@@ -25,22 +25,24 @@ const memeEventListeners = function () {
   $('.image-preview').on('error', badImagePreview)
 }
 
-const removeMeme = function (index) {
-  console.log(store)
-  console.log(index)
-  const deletedMeme = store.memes.findIndex((x) => x.id == index)
-  store.memes.splice(deletedMeme)
-  console.log(deletedMeme)
-  console.log(deletedMeme.id)
-  $('#meme-stream').eq(deletedMeme).remove()
-  // refreshMemes()
-}
+// const removeMeme = function (index) {
+//   console.log(store)
+//   console.log(index)
+//   const deletedMeme = store.memes.findIndex((x) => x.id == index)
+//   store.memes.splice(deletedMeme)
+//   console.log(deletedMeme)
+//   console.log(deletedMeme.id)
+//   $('#meme-stream').eq(deletedMeme).remove()
+//   // refreshMemes()
+// }
 
 const badImagePreview = function (event) {
   console.log('bad image')
-  $('#image-preview').attr('src', 'https://i.imgflip.com/11fjj7.jpg')
-  $('#top-text-preview').text('')
-  $('#bottom-text-preview').text('')
+  const dataID = event.target.dataset.id
+  console.log(dataID)
+  $(`#image-preview${dataID}`).attr('src', 'https://i.imgflip.com/11fjj7.jpg')
+  $(`#top-text-preview${dataID}`).text('')
+  $(`#bottom-text-preview${dataID}`).text('')
 }
 
 const updatePreview = function (event) {
@@ -56,13 +58,12 @@ const updatePreview = function (event) {
   } else if (event.target.id === `bottom-text-size${dataID}`) {
     $(`#bottom-text-preview-size${dataID}`).css('font-size', `${event.target.value}vw`)
   } else if (event.target.id === `image-url${dataID}`) {
-    $('#image-preview').attr('src', event.target.value)
+    $(`#image-preview${dataID}`).attr('src', event.target.value)
   }
 }
 
 module.exports = {
   displayMemes,
   updatePreview,
-  badImagePreview,
-  removeMeme
+  badImagePreview
 }
