@@ -46,6 +46,7 @@ const onSubmit = function (event) {
   console.log(store)
   const form = event.target
   const formData = getFormFields(form)
+  console.log(formData)
   if (store.status.signIn && $('#email').val() && $('#password').val()) {
     delete formData.credentials.password_confirmation
     api.signIn(formData)

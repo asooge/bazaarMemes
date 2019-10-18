@@ -17,10 +17,9 @@ const badImagePreview = function (event) {
   $('#bottom-text-preview').text('')
 }
 
-
 const updatePreview = function (event) {
   console.log(event.target.id)
-  if (event.target.id === 'top-text'){
+  if (event.target.id === 'top-text') {
     $('#top-text-preview').text(event.target.value)
   } else if (event.target.id === 'bottom-text') {
     $('#bottom-text-preview').text(event.target.value)
@@ -31,7 +30,6 @@ const updatePreview = function (event) {
   } else if (event.target.id === 'image-url') {
     $('#image-preview').attr('src', event.target.value)
   }
-
 }
 
 module.exports = {
