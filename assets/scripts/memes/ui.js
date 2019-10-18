@@ -52,9 +52,9 @@ const updatePreview = function (event) {
   } else if (event.target.id === `bottom-text${dataID}`) {
     $(`#bottom-text-preview${dataID}`).text(event.target.value)
   } else if (event.target.id === `top-text-size${dataID}`) {
-    $('#top-text-preview-size').css('font-size', `${event.target.value}vw`)
+    $(`#top-text-preview-size${dataID}`).css('font-size', `${event.target.value}vw`)
   } else if (event.target.id === `bottom-text-size${dataID}`) {
-    $('#bottom-text-preview-size').css('font-size', `${event.target.value}vw`)
+    $(`#bottom-text-preview-size${dataID}`).css('font-size', `${event.target.value}vw`)
   } else if (event.target.id === `image-url${dataID}`) {
     $('#image-preview').attr('src', event.target.value)
   }
