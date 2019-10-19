@@ -53,19 +53,39 @@
         <h4>Generate your own meme:</h4>
         <form id="meme-generator0" class="meme-generator">
           <label for="image-url">image url:</label>
-          <input type="text" name="meme[image]" id="image-url0" class="image-url" data-id=0>
+          <input type="text" name="meme[image]" id="image-url0" class="image-url" data-id=0> <br>
+
+          <label for="dropdown-menu0">Or select a template:</label>
+          <select name="dropdown-munu0" id="dropdown-menu0" class="image-url" data-id=0>
+            <option value="">Select a template</option>
+            <option value="https://imgflip.com/s/meme/Grumpy-Cat.jpg">Grumpy Cat</option>
+            <option value="https://i.imgflip.com/1am4v4.jpg">Success Kid</option>
+            <option value="https://imgflip.com/s/meme/Yo-Dawg-Heard-You.jpg">Pimp my meme</option>
+            <option value="https://imgflip.com/s/meme/Doge.jpg">Doge</option>
+            <option value="https://imgflip.com/s/meme/Confession-Bear.jpg">Confession Bear</option>
+            <option value="https://i.kym-cdn.com/photos/images/newsfeed/000/089/665/tumblr_l96b01l36p1qdhmifo1_500.jpg">Y U No</option>
+            <option value="https://media1.giphy.com/media/i2dE5VvBNxBw4/giphy.gif">Dancing: Rick and Morty</option>
+            <option value="https://media1.giphy.com/media/1SD4lL2dG7Qe4/source.gif">Respect my authoritah!</option>
+            <option value="https://img.buzzfeed.com/buzzfeed-static/static/2014-07/18/10/enhanced/webdr09/anigif_enhanced-buzz-22799-1405693809-7.gif">Throwing Simba</option>
+            <option value="https://66.media.tumblr.com/992b7bb37b2b8d2f60aa02982d33a67e/tumblr_owae04j8PJ1qejpvyo1_500.gifv">Ooh Wee!</option>
+            <option value="https://media.giphy.com/media/j3ET8bU0VvTLd7QMCn/giphy.gif ">Chef: southpark</option>
+            <option value="https://media.giphy.com/media/DgLsbUL7SG3kI/giphy.gif ">Meeseeks can do</option>
+
+          </select>
+
+
           <br>
           <label for="top-text">top text:</label>
           <input type="text" name="meme[text_1]" id="top-text0" class="top-text" data-id=0>
           <br>
           <label for="top-text-size">top text size:</label>
-          <input type="range" name="meme[font_size_1]" id="top-text-size0" data-id=0 class="top-text-size" min="0.5" max="10" step="0.5" value="5">
+          <input type="range" name="meme[font_size_1]" id="top-text-size0" data-id=0 class="top-text-size" min="0.5" max="10" step="0.1" value="5">
           <br>
           <label for="bottom-text">bottom text:</label>
           <input type="text" name="meme[text_2]" id="bottom-text0" data-id=0 class="bottom-text">
           <br>
           <label for="top-text-size">bottom text size:</label>
-          <input type="range" name="meme[font_size_2]" id="bottom-text-size0" class="bottom-text-size" data-id=0 min="0.5" max="10" step="0.5" value="5">
+          <input type="range" name="meme[font_size_2]" id="bottom-text-size0" class="bottom-text-size" data-id=0 min="0.5" max="10" step="0.1" value="5">
           <button class="btn btn-warning">Generate meme</button>
         </form>
         <div class = meme>

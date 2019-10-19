@@ -22,7 +22,7 @@ const memeEventListeners = function () {
   $('.bottom-text').on('input', updatePreview)
   $('.top-text-size').on('input', updatePreview)
   $('.bottom-text-size').on('input', updatePreview)
-  $('.image-url').on('input', updatePreview)
+  $('.image-url').on('input change', updatePreview)
   $('.image-preview').on('error', badImagePreview)
 }
 
@@ -59,6 +59,10 @@ const updatePreview = function (event) {
   } else if (event.target.id === `bottom-text-size${dataID}`) {
     $(`#bottom-text-preview-size${dataID}`).css('font-size', `${event.target.value}vw`)
   } else if (event.target.id === `image-url${dataID}`) {
+    $(`#image-preview${dataID}`).attr('src', event.target.value)
+    $(`#dropdown-menu${dataID}`).val('')
+  } else if (event.target.id === `dropdown-menu${dataID}`) {
+    $(`#image-url${dataID}`).val(event.target.value)
     $(`#image-preview${dataID}`).attr('src', event.target.value)
   }
 }

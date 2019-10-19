@@ -16,7 +16,7 @@ $(() => {
   $('.bottom-text').on('input', ui.updatePreview)
   $('.top-text-size').on('input', ui.updatePreview)
   $('.bottom-text-size').on('input', ui.updatePreview)
-  $('.image-url').on('input', ui.updatePreview)
+  $('.image-url').on('input change', ui.updatePreview)
   $('.image-preview').on('error', ui.badImagePreview)
 
   $('.meme-generator').on('submit', memeEvents.generateMeme)
