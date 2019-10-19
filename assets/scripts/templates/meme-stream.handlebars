@@ -17,7 +17,8 @@
     <button data-id="{{meme.id}}" class='delete-meme btn btn-danger'>Delete meme</button>
     <button data-id="{{meme.id}}" class='update-meme btn btn-warning'>Update meme</button>
   </div>
-  <div class='meme' data-id="{{meme.id}}">
+
+  <div class='meme update-meme-input' id="update-meme-input{{meme.id}}" data-id="{{meme.id}}">
     <h4>Update your meme:</h4>
     <form id="meme-generator{{meme.id}}">
       <label for="image-url">image url:</label>

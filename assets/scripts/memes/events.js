@@ -10,8 +10,8 @@ const showMemes = function () {
 }
 
 const activateButtons = function () {
-  $('.delete-meme').on('click', deleteMeme)
-  $('.update-meme').on('click', updateMeme)
+  $('.delete-meme').on('click', ui.deleteMeme)
+  $('.update-meme').on('click', ui.updateMeme)
 }
 
 const generateMeme = function (event) {
@@ -54,9 +54,10 @@ const deleteMeme = function (event) {
     .catch(console.error)
 }
 
-const updateMeme = function (event) {
-  console.log('updateMeme')
-}
+// const updateMeme = function (event) {
+//   console.log('updateMeme')
+//   console.log(event)
+// }
 
 module.exports = {
   showMemes,

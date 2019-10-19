@@ -14,6 +14,7 @@ const displayMemes = function (memeData) {
 const refreshMemes = function () {
   $('#meme-stream').children().remove()
   $('#meme-stream').append(showMemesTemplate({ memes: store.memes }))
+  $('.update-meme-input').hide()
   memeEventListeners()
 }
 
@@ -24,6 +25,7 @@ const memeEventListeners = function () {
   $('.bottom-text-size').on('input', updatePreview)
   $('.image-url').on('input change', updatePreview)
   $('.image-preview').on('error', badImagePreview)
+  //$('.update-meme').
 }
 
 // const removeMeme = function (index) {
@@ -36,6 +38,19 @@ const memeEventListeners = function () {
 //   $('#meme-stream').eq(deletedMeme).remove()
 //   // refreshMemes()
 // }
+
+const updateMeme = function (event) {
+  console.log('updateMeme')
+  console.log(event)
+  const dataID = event.target.dataset.id
+  console.log($(`#update-meme-input${dataID}`).attr('style'))
+  if ($(`#update-meme-input${dataID}`).attr('style') === ("display: none;")) {
+    $(`#update-meme-input${dataID}`).show()
+  } else {
+    $(`#update-meme-input${dataID}`).hide()
+  }
+
+}
 
 const badImagePreview = function (event) {
   console.log('bad image')
@@ -70,5 +85,6 @@ const updatePreview = function (event) {
 module.exports = {
   displayMemes,
   updatePreview,
-  badImagePreview
+  badImagePreview,
+  updateMeme
 }

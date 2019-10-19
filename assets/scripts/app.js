@@ -20,6 +20,6 @@ $(() => {
   $('.image-preview').on('error', ui.badImagePreview)
 
   $('.meme-generator').on('submit', memeEvents.generateMeme)
-  $('.delete-meme').on('click', memeEvents.deleteMeme)
-  $('.update-meme').on('click', memeEvents.updateMeme)
+  // $('.delete-meme').on('click', memeEvents.deleteMeme)
+  // $('.update-meme').on('click', memeEvents.updateMeme)
 })
