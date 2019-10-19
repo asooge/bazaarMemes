@@ -10,8 +10,15 @@ const showMemes = function () {
 }
 
 const activateButtons = function () {
-  $('.delete-meme').on('click', ui.deleteMeme)
+  $('.delete-meme').on('click', deleteMeme)
   $('.update-meme').on('click', ui.updateMeme)
+  $('.top-text').on('input', ui.updatePreview)
+  $('.bottom-text').on('input', ui.updatePreview)
+  $('.top-text-size').on('input', ui.updatePreview)
+  $('.bottom-text-size').on('input', ui.updatePreview)
+  $('.image-url').on('input change', ui.updatePreview)
+  $('.image-preview').on('error', ui.badImagePreview)
+  $('.finalize-update-meme').on('submit', finalizeMemeUpdate)
 }
 
 const generateMeme = function (event) {
@@ -39,6 +46,21 @@ const generateMeme = function (event) {
 
   api.postMeme(formData)
     .then(console.log)
+    .catch(console.error)
+}
+
+const finalizeMemeUpdate = function (event) {
+  event.preventDefault()
+  console.log('finalize update meme button')
+  const memeID = event.target.dataset.id
+  console.log(memeID)
+  const formData = getFormFields(event.target)
+  console.log(formData)
+  api.updateMeme(formData, memeID)
+    .then(console.log)
+    .then(api.getMyMemes)
+    .then(ui.displayMemes)
+    .then(activateButtons)
     .catch(console.error)
 }
 

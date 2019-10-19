@@ -15,18 +15,19 @@ const refreshMemes = function () {
   $('#meme-stream').children().remove()
   $('#meme-stream').append(showMemesTemplate({ memes: store.memes }))
   $('.update-meme-input').hide()
-  memeEventListeners()
+  // memeEventListeners()
 }
 
-const memeEventListeners = function () {
-  $('.top-text').on('input', updatePreview)
-  $('.bottom-text').on('input', updatePreview)
-  $('.top-text-size').on('input', updatePreview)
-  $('.bottom-text-size').on('input', updatePreview)
-  $('.image-url').on('input change', updatePreview)
-  $('.image-preview').on('error', badImagePreview)
-  //$('.update-meme').
-}
+// const memeEventListeners = function () {
+//   $('.top-text').on('input', updatePreview)
+//   $('.bottom-text').on('input', updatePreview)
+//   $('.top-text-size').on('input', updatePreview)
+//   $('.bottom-text-size').on('input', updatePreview)
+//   $('.image-url').on('input change', updatePreview)
+//   $('.image-preview').on('error', badImagePreview)
+//   $('.finalize-update-meme').on('submit', )
+//   //$('.update-meme').
+// }
 
 // const removeMeme = function (index) {
 //   console.log(store)
@@ -49,7 +50,6 @@ const updateMeme = function (event) {
   } else {
     $(`#update-meme-input${dataID}`).hide()
   }
-
 }
 
 const badImagePreview = function (event) {

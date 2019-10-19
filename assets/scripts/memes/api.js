@@ -22,9 +22,9 @@ const postMeme = function (formData) {
   })
 }
 
-const updateMeme = function (memeData) {
+const updateMeme = function (memeData, id) {
   return $.ajax({
-    url: config.apiUrl + '/memes' + id,
+    url: config.apiUrl + '/memes/' + id,
     headers: {
       Authorization: `Token token=${store.user.token}`
     },
