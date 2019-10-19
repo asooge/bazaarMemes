@@ -3,7 +3,8 @@ const showMemesTemplate = require('../templates/meme-stream.handlebars')
 
 const displayMemes = function (memeData) {
   console.log('displayMemes')
-  store.memes = memeData.memes
+  store.memes = memeData.memes.reverse()
+  console.log(store.memes)
   console.log(store)
   //$('#meme-stream').text(store.memes[0].image)
   //const showMemesHTML = showMemesTemplate({ memes: store.memes })
