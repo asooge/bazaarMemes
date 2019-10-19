@@ -5,6 +5,9 @@ const memeEvents = require('./memes/events')
 const ui = require('./memes/ui')
 
 $(() => {
+  $('#change-pass').hide()
+  $('#sign-out').hide()
+
   $('#sign-up').on('click', events.clickSignUp)
   $('#sign-in').on('click', events.clickSignIn)
   $('#sign-out').on('click', events.clickSignOut)

@@ -16,7 +16,7 @@
       <p>Buy, sell, trade, or steal.</p>
       <p>Your one-stop shop for memes</p>
 
-      <section class="sign-in">
+      <!-- <section class="sign-in">
         <p id="user-info"></p>
         <p id="message-display">sign in or sign up to start memeing</p>
         <button id=sign-up class="btn btn-info clear-auth">sign up</button>
@@ -48,7 +48,76 @@
           </div>
           <button id="submit" class="btn btn-primary clear-auth">submit</button>
         </form>
-      </section>
+      </section> -->
+
+
+      <p id="user-info"></p>
+      <p id="message-display">sign in or sign up to start memeing</p>
+
+      <button id=sign-up class="btn btn-primary" data-toggle="modal" data-target="#modal-center">sign up</button>
+      <button id=sign-in class="btn btn-primary" data-toggle="modal" data-target="#modal-center">sign in</button>
+      <button id=change-pass class="btn btn-info" data-toggle="modal" data-target="#modal-center">change password</button>
+      <button id=sign-out class="btn btn-info clear-auth">sign out</button>
+
+      <br>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="modal-center" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-title">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <section class="sign-in">
+
+                <form id="user-auth">
+                  <div id="enter-email" class="clear-auth">
+                    <label for="email">email:</label>
+                    <input id="email" type="email" name="credentials[email]" placeholder="user@email.com">
+                  </div>
+                  <div id="enter-password" class="clear-auth">
+                    <label for="password">password:</label>
+                    <input id="password" type="password" name="credentials[password]" placeholder="user password">
+                  </div>
+                  <div id="enter-confirm-pass" class="clear-auth">
+                    <label for="password_confirm">confirm password:</label>
+                    <input id="password-confirm" type="password" name="credentials[password_confirmation]" placeholder="confirm password">
+                  </div>
+                  <div id="enter-old" class="clear-auth">
+                    <label for="old-pass">old pass:</label>
+                    <input id="old-pass" type="password" name="passwords[old]" placeholder="old password">
+                  </div>
+                  <div id="enter-new" class="clear-auth">
+                    <label for="new-pass">new pass:</label>
+                    <input id="new-pass" type="password" name="passwords[new]" placeholder="new password">
+                  </div>
+                  <button id="submit" class="btn btn-primary clear-auth">submit</button>
+                </form>
+              </section>
+
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
       <section class="create-a-meme meme-display" data-id=0>
         <h4>Generate your own meme:</h4>
         <form id="meme-generator0" class="meme-generator">

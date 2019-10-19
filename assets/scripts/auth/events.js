@@ -16,15 +16,26 @@ store.status = {
   }
 }
 
+const resetForm = function () {
+  $('.clear-auth').hide()
+  $('#user-auth')[0].reset()
+}
+
 const clickSignUp = function () {
+  $('#modal-title').text('Sign up')
   store.status.reset()
   store.status.signUp = true
   console.log('clickSignUp works')
+  resetForm()
+  $('#enter-email, #enter-password, #enter-confirm-pass').show()
 }
 const clickSignIn = function () {
+  $('#modal-title').text('Sign in')
   store.status.reset()
   store.status.signIn = true
   console.log('clickSignIn works')
+  resetForm()
+  $('#enter-email, #enter-password').show()
 }
 const clickSignOut = function () {
   store.status.reset()
@@ -35,6 +46,7 @@ const clickSignOut = function () {
     .catch(ui.onSignOutFailure)
 }
 const clickChangePass = function () {
+  $('#modal-title').text('Change password')
   store.status.reset()
   store.status.changePass = true
   console.log('clickChangePass works')
