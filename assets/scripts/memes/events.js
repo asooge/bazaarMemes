@@ -19,6 +19,20 @@ const activateButtons = function () {
   $('.image-url').on('input change', ui.updatePreview)
   $('.image-preview').on('error', ui.badImagePreview)
   $('.finalize-update-meme').on('submit', finalizeMemeUpdate)
+  $('.comment').on('submit', submitComment)
+}
+
+const submitComment = function (event) {
+  event.preventDefault()
+  console.log('submit comment')
+  const formData = getFormFields(event.target)
+  console.log(formData)
+  api.createComment(formData)
+    .then(console.log)
+    .then(api.getMyMemes)
+    .then(ui.displayMemes)
+    .then(activateButtons)
+    .catch(console.error)
 }
 
 const generateMeme = function (event) {

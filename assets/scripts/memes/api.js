@@ -43,9 +43,22 @@ const destroyMeme = function (id) {
   })
 }
 
+const createComment = function (formData) {
+  return $.ajax({
+    url: config.apiUrl + '/comments',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'POST',
+    data: formData
+  })
+}
+
+
 module.exports = {
   getMyMemes,
   postMeme,
   updateMeme,
-  destroyMeme
+  destroyMeme,
+  createComment
 }
