@@ -24,6 +24,34 @@ body {
   width: 100%;
 }
 
+.upvotes {
+  border: solid black 1px;
+}
+
+.upvote {
+  display: inline-block;
+  margin: 0;
+  padding-top: 10px;
+  padding-right: 4px;
+  padding-left: 4px;
+  border-radius: 10%;
+  border: solid black 1px;
+}
+
+.total-upvotes {
+  display: inline-block;
+}
+
+.upvote:hover {
+  cursor: pointer;
+  background-color: #99c3ff;
+}
+
+.comment {
+  background-color: #edd698;
+  margin: 0;
+}
+
 .meme-display {
   width: 50%;
   //border: solid red 1px;

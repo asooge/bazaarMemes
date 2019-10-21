@@ -63,11 +63,21 @@
 
   </div>
 
+  <div class='upvotes'>
+    <div class='upvote' data-id={{meme.id}}>
+      <p>👍 upvote</p>
+    </div>
+    <div class='upvote' data-id={{meme.id}}>
+      <p>👎 downvote</p>
+    </div>
+    <p class ='total-upvotes' id='total-upvotes{{meme.id}}'>Total upvotes: </p>
+  </div>
+
   <div id="comments{{meme.id}}">
     <h5 class=comment> Comments: </h5>
     <form class="create-comment comment" data-id="{{meme.id}}">
       <label for="comment-on-{{meme.id}}">Add a comment: </label>
-      <input name="comment[message]" id="comment-on-{{meme.id}}" type=text style="width: 100%;">
+      <input name="comment[message]" class='comment' id="comment-on-{{meme.id}}" type=text style="width: 100%;" placeholder='enter your comment'>
       <input name="comment[meme_id]" value={{meme.id}} type=text style="display: none;">
       <button class="btn btn-primary submit-comment">Submit comment</button>
     </form>
