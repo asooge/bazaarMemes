@@ -13,7 +13,10 @@ $(() => {
   $('#sign-out').on('click', events.clickSignOut)
   $('#change-pass').on('click', events.clickChangePass)
   $('#user-auth').on('submit', events.onSubmit)
+
+
   $('#meme-button').on('click', memeEvents.showMemes)
+  $('#global-memes').on('click', memeEvents.showGlobalMemes)
 
   $('.top-text').on('input', ui.updatePreview)
   $('.bottom-text').on('input', ui.updatePreview)

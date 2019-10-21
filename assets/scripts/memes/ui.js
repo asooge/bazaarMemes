@@ -3,7 +3,7 @@ const showMemesTemplate = require('../templates/meme-stream.handlebars')
 
 const displayMemes = function (memeData) {
   console.log('displayMemes')
-  store.memes = memeData.memes.sort((x,y) => y.id - x.id)
+  store.memes = memeData.memes.sort((x, y) => y.id - x.id)
   console.log(store.memes)
   console.log(store)
   //$('#meme-stream').text(store.memes[0].image)

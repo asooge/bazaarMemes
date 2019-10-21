@@ -11,6 +11,16 @@ const getMyMemes = function () {
   })
 }
 
+const getGlobalMemes = function () {
+  return $.ajax({
+    url: config.apiUrl + '/global',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'GET'
+  })
+}
+
 const postMeme = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/memes',
@@ -60,5 +70,6 @@ module.exports = {
   postMeme,
   updateMeme,
   destroyMeme,
-  createComment
+  createComment,
+  getGlobalMemes
 }

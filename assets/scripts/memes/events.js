@@ -9,6 +9,13 @@ const showMemes = function () {
     .catch(console.error)
 }
 
+const showGlobalMemes = function () {
+  api.getGlobalMemes()
+    .then(ui.displayMemes)
+    .then(activateButtons)
+    .catch(console.error)
+}
+
 const activateButtons = function () {
   $('.delete-meme').on('click', deleteMeme)
   $('.update-meme').on('click', ui.updateMeme)
@@ -97,5 +104,6 @@ const deleteMeme = function (event) {
 
 module.exports = {
   showMemes,
-  generateMeme
+  generateMeme,
+  showGlobalMemes
 }
