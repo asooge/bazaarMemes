@@ -79,6 +79,9 @@ const generateMeme = function (event) {
 
   api.postMeme(formData)
     .then(console.log)
+    .then(api.getMyMemes)
+    .then(ui.displayMemes)
+    .then(activateButtons)
     .catch(console.error)
 }
 

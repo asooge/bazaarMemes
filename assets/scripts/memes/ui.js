@@ -1,6 +1,12 @@
 const store = require('../store')
 const showMemesTemplate = require('../templates/meme-stream.handlebars')
 
+const scrollToMemes = function () {
+  $('html,body').animate({
+    scrollTop: $('#meme-stream').offset().top},
+    'slow')
+}
+
 const displayMemes = function (memeData) {
   console.log('displayMemes')
   store.memes = memeData.memes.sort((x, y) => y.id - x.id)
@@ -9,6 +15,7 @@ const displayMemes = function (memeData) {
   //$('#meme-stream').text(store.memes[0].image)
   //const showMemesHTML = showMemesTemplate({ memes: store.memes })
   refreshMemes()
+  scrollToMemes()
 }
 
 const refreshMemes = function () {
