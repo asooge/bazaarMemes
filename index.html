@@ -12,9 +12,10 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Welcome to Bazaar Memes</h1>
-      <p>Buy, sell, trade, or steal.</p>
-      <p>Your one-stop shop for memes</p>
+      <section id=welcome>
+        <h1>Welcome to Bazaar Memes</h1>
+        <p>Buy, sell, trade, or steal.</p>
+        <p>Your one-stop shop for memes</p>
 
       <!-- <section class="sign-in">
         <p id="user-info"></p>
@@ -51,16 +52,21 @@
       </section> -->
 
 
-      <p id="user-info"></p>
-      <p id="message-display">sign in or sign up to start memeing</p>
+        <p id="user-info"></p>
+        <p id="message-display">sign in or sign up to start memeing</p>
 
-      <button id=sign-up class="btn btn-primary" data-toggle="modal" data-target="#modal-center">sign up</button>
-      <button id=sign-in class="btn btn-primary" data-toggle="modal" data-target="#modal-center">sign in</button>
-      <button id=change-pass class="btn btn-info" data-toggle="modal" data-target="#modal-center">change password</button>
-      <button id=sign-out class="btn btn-info clear-auth">sign out</button>
 
-      <br>
+        <button id=sign-up class="btn btn-primary" data-toggle="modal" data-target="#modal-center">sign up</button>
+        <button id=sign-in class="btn btn-primary" data-toggle="modal" data-target="#modal-center">sign in</button>
+        <button id=change-pass class="btn btn-info" data-toggle="modal" data-target="#modal-center">change password</button>
+        <button id=sign-out class="btn btn-info clear-auth">sign out</button>
 
+        <br>
+
+        <button id='meme-button' class="btn btn-danger">Show me the memes</button>
+        <img src='https://thumbs.gfycat.com/HatefulYoungBilby-max-1mb.gif' alt='view global memes' id='global-memes' class="btn btn-primary" width=100px>
+
+      </section>
 
       <!-- Modal -->
       <div class="modal fade" id="modal-center" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -163,14 +169,12 @@
         </div>
       </section>
 
-      <section class="meme-display">
-        <button id='meme-button' class="btn btn-danger">Show me the memes</button>
-        <img src='http://clipartmag.com/images/spinning-globe-gif-22.gif' alt='view global memes' id='global-memes' class="btn btn-primary">
+      <div class="meme-display">
+
         <div id="meme-stream"></div>
 
+      </div>
 
-
-      </section>
 
     </body>
 </html>

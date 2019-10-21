@@ -1,8 +1,10 @@
 const api = require('./api')
 const ui = require('./ui')
+const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const showMemes = function () {
+  store.global = false
   api.getMyMemes()
     .then(ui.displayMemes)
     .then(activateButtons)
@@ -10,6 +12,7 @@ const showMemes = function () {
 }
 
 const showGlobalMemes = function () {
+  store.global = true
   api.getGlobalMemes()
     .then(ui.displayMemes)
     .then(activateButtons)
@@ -34,12 +37,21 @@ const submitComment = function (event) {
   console.log('submit comment')
   const formData = getFormFields(event.target)
   console.log(formData)
-  api.createComment(formData)
-    .then(console.log)
-    .then(api.getMyMemes)
-    .then(ui.displayMemes)
-    .then(activateButtons)
-    .catch(console.error)
+  if (store.global === true) {
+    api.createComment(formData)
+      .then(console.log)
+      .then(api.getGlobalMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .catch(console.error)
+  } else {
+    api.createComment(formData)
+      .then(console.log)
+      .then(api.getMyMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .catch(console.error)
+  }
 }
 
 const generateMeme = function (event) {
@@ -77,24 +89,39 @@ const finalizeMemeUpdate = function (event) {
   console.log(memeID)
   const formData = getFormFields(event.target)
   console.log(formData)
-  api.updateMeme(formData, memeID)
-    .then(console.log)
-    .then(api.getMyMemes)
-    .then(ui.displayMemes)
-    .then(activateButtons)
-    .catch(console.error)
+  if (store.global === true) {
+    api.updateMeme(formData, memeID)
+      .then(console.log)
+      .then(api.getGlobalMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .catch(console.error)
+  } else {
+    api.updateMeme(formData, memeID)
+      .then(console.log)
+      .then(api.getMyMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .catch(console.error)
+  }
 }
 
 const deleteMeme = function (event) {
   console.log('deleteMeme', event.target.dataset.id)
   const id = event.target.dataset.id
-  api.destroyMeme(id)
-    .then(api.getMyMemes)
-    .then(ui.displayMemes)
-    .then(activateButtons)
-    //.then(ui.removeMeme(id))
-    //.then(activateButtons())
-    .catch(console.error)
+  if (store.global === true) {
+    api.destroyMeme(id)
+      .then(api.getGlobalMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .catch(console.error)
+  } else {
+    api.destroyMeme(id)
+      .then(api.getMyMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .catch(console.error)
+  }
 }
 
 // const updateMeme = function (event) {

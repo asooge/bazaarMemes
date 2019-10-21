@@ -8,6 +8,7 @@ store.status = {
   signIn: false,
   signOut: false,
   changePass: false,
+  global: false,
   reset: function () {
     this.signUp = false
     this.signIn = false
