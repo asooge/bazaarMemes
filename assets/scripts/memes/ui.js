@@ -15,7 +15,6 @@ const displayMemes = function (memeData) {
   //$('#meme-stream').text(store.memes[0].image)
   //const showMemesHTML = showMemesTemplate({ memes: store.memes })
   refreshMemes()
-  scrollToMemes()
 }
 
 const refreshMemes = function () {
@@ -93,5 +92,6 @@ module.exports = {
   displayMemes,
   updatePreview,
   badImagePreview,
-  updateMeme
+  updateMeme,
+  scrollToMemes
 }

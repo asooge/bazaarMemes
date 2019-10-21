@@ -8,6 +8,7 @@ const showMemes = function () {
   api.getMyMemes()
     .then(ui.displayMemes)
     .then(activateButtons)
+    .then(ui.scrollToMemes)
     .catch(console.error)
 }
 
@@ -16,6 +17,7 @@ const showGlobalMemes = function () {
   api.getGlobalMemes()
     .then(ui.displayMemes)
     .then(activateButtons)
+    .then(ui.scrollToMemes)
     .catch(console.error)
 }
 
@@ -82,6 +84,9 @@ const generateMeme = function (event) {
     .then(api.getMyMemes)
     .then(ui.displayMemes)
     .then(activateButtons)
+    .then(ui.scrollToMemes)
+    .then($('#meme-generator0')[0].reset())
+    .then($('#image-preview0').attr('src', ''))
     .catch(console.error)
 }
 

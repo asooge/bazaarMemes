@@ -8,6 +8,22 @@ body {
   background-size: cover;
 }
 
+#global-memes {
+  margin: 5px;
+  border: 0;
+  display: inline-block;
+  position: relative;
+}
+
+#view-global-memes {
+  position: absolute;
+  z-index: 10;
+  bottom: -16px;
+  font-size: 13px;
+  text-align: center;
+  width: 100%;
+}
+
 .meme-display {
   width: 50%;
   //border: solid red 1px;
