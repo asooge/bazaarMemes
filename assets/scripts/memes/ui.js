@@ -58,6 +58,17 @@ const updateMeme = function (event) {
   }
 }
 
+const onUpdateSuccess = function (memeID) {
+  setTimeout(function () { displayUpdateMessage(memeID) }, 500)
+}
+
+const displayUpdateMessage = function (memeID) {
+  console.log('onUpdateSuccess')
+  console.log(memeID)
+  $(`#update-message${memeID}`).text('Meme update successful')
+  $(`#update-message${memeID}`).fadeOut(5000)
+}
+
 const badImagePreview = function (event) {
   console.log('bad image')
   const dataID = event.target.dataset.id
@@ -93,5 +104,6 @@ module.exports = {
   updatePreview,
   badImagePreview,
   updateMeme,
-  scrollToMemes
+  scrollToMemes,
+  onUpdateSuccess
 }

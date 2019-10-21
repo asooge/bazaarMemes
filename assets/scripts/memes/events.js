@@ -101,8 +101,11 @@ const finalizeMemeUpdate = function (event) {
     api.updateMeme(formData, memeID)
       .then(console.log)
       .then(api.getGlobalMemes)
+      .then(ui.onUpdateSuccess(memeID))
       .then(ui.displayMemes)
       .then(activateButtons)
+      .then(console.log('memeID'))
+
       .catch(console.error)
   } else {
     api.updateMeme(formData, memeID)
@@ -110,6 +113,7 @@ const finalizeMemeUpdate = function (event) {
       .then(api.getMyMemes)
       .then(ui.displayMemes)
       .then(activateButtons)
+      .then(ui.onUpdateSuccess(memeID))
       .catch(console.error)
   }
 }
