@@ -155,44 +155,53 @@ const finalizeMemeUpdate = function (event) {
   console.log('finalize update meme button')
   const memeID = event.target.dataset.id
   console.log(memeID)
-  const formData = getFormFields(event.target)
-  console.log(formData)
-  if (store.global === true) {
-    api.updateMeme(formData, memeID)
-      .then(console.log)
-      .then(api.getGlobalMemes)
-      .then(ui.onUpdateSuccess(memeID))
-      .then(ui.displayMemes)
-      .then(activateButtons)
-      .then(console.log('memeID'))
 
-      .catch(console.error)
+  if (store.user.memes && store.user.memes.includes(x => x.id == memeID)) {
+    const formData = getFormFields(event.target)
+    console.log(formData)
+    if (store.global === true) {
+      api.updateMeme(formData, memeID)
+        .then(console.log)
+        .then(api.getGlobalMemes)
+        .then(ui.onUpdateSuccess(memeID))
+        .then(ui.displayMemes)
+        .then(activateButtons)
+        .then(console.log('memeID'))
+
+        .catch(console.error)
+    } else {
+      api.updateMeme(formData, memeID)
+        .then(console.log)
+        .then(api.getMyMemes)
+        .then(ui.displayMemes)
+        .then(activateButtons)
+        .then(ui.onUpdateSuccess(memeID))
+        .catch(console.error)
+    }
   } else {
-    api.updateMeme(formData, memeID)
-      .then(console.log)
-      .then(api.getMyMemes)
-      .then(ui.displayMemes)
-      .then(activateButtons)
-      .then(ui.onUpdateSuccess(memeID))
-      .catch(console.error)
+    ui.cannotUpdateMeme(memeID)
   }
 }
 
 const deleteMeme = function (event) {
   console.log('deleteMeme', event.target.dataset.id)
   const id = event.target.dataset.id
-  if (store.global === true) {
-    api.destroyMeme(id)
-      .then(api.getGlobalMemes)
-      .then(ui.displayMemes)
-      .then(activateButtons)
-      .catch(console.error)
+  if (store.user.memes && store.user.memes.includes(x => x.id == id)) {
+    if (store.global === true) {
+      api.destroyMeme(id)
+        .then(api.getGlobalMemes)
+        .then(ui.displayMemes)
+        .then(activateButtons)
+        .catch(console.error)
+    } else {
+      api.destroyMeme(id)
+        .then(api.getMyMemes)
+        .then(ui.displayMemes)
+        .then(activateButtons)
+        .catch(console.error)
+    }
   } else {
-    api.destroyMeme(id)
-      .then(api.getMyMemes)
-      .then(ui.displayMemes)
-      .then(activateButtons)
-      .catch(console.error)
+    ui.cannotDeleteMeme(id)
   }
 }
 

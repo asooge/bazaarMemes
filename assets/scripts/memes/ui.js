@@ -41,27 +41,21 @@ const refreshMemes = function () {
   // memeEventListeners()
 }
 
-// const memeEventListeners = function () {
-//   $('.top-text').on('input', updatePreview)
-//   $('.bottom-text').on('input', updatePreview)
-//   $('.top-text-size').on('input', updatePreview)
-//   $('.bottom-text-size').on('input', updatePreview)
-//   $('.image-url').on('input change', updatePreview)
-//   $('.image-preview').on('error', badImagePreview)
-//   $('.finalize-update-meme').on('submit', )
-//   //$('.update-meme').
-// }
+const cannotDeleteMeme = function (memeID) {
+  $(`#update-message${memeID}`).text('You can only delete your own memes!').show().addClass('animated bounceInRight')
 
-// const removeMeme = function (index) {
-//   console.log(store)
-//   console.log(index)
-//   const deletedMeme = store.memes.findIndex((x) => x.id == index)
-//   store.memes.splice(deletedMeme)
-//   console.log(deletedMeme)
-//   console.log(deletedMeme.id)
-//   $('#meme-stream').eq(deletedMeme).remove()
-//   // refreshMemes()
-// }
+  setTimeout(() => $(`#update-message${memeID}`).removeClass('animated bounceInRight'), 1000)
+
+  // $(`#update-message${memeID}`).fadeOut(5000)
+}
+
+const cannotUpdateMeme = function (memeID) {
+  $(`#update-message${memeID}`).text('You can only update your own memes!').show().addClass('animated bounceInRight')
+
+  setTimeout(() => $(`#update-message${memeID}`).removeClass('animated bounceInRight'), 1000)
+
+  // $(`#update-message${memeID}`).fadeOut(5000)
+}
 
 const updateMeme = function (event) {
   console.log('updateMeme')
@@ -82,7 +76,7 @@ const onUpdateSuccess = function (memeID) {
 const displayUpdateMessage = function (memeID) {
   console.log('onUpdateSuccess')
   console.log(memeID)
-  $(`#update-message${memeID}`).text('Meme update successful')
+  $(`#update-message${memeID}`).text('Meme update successful').show()
   $(`#update-message${memeID}`).fadeOut(5000)
 }
 
@@ -124,5 +118,7 @@ module.exports = {
   scrollToMemes,
   onUpdateSuccess,
   youMustSignIn,
-  refreshMemes
+  refreshMemes,
+  cannotDeleteMeme,
+  cannotUpdateMeme
 }
