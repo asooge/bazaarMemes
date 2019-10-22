@@ -7,6 +7,21 @@ const scrollToMemes = function () {
     'slow')
 }
 
+const scrollToTop = function () {
+  $('html,body').animate({
+    scrollTop: $('#welcome').offset().top},
+    'fast')
+}
+
+const youMustSignIn = function () {
+  console.log('you must sign in')
+  scrollToTop()
+  $('#message-display').addClass('animated bounceIn')
+  $('#sign-up, #sign-in').addClass('animated pulse')
+  setTimeout(() => $('#message-display').removeClass('animated bounceIn'), 1000)
+  setTimeout(() => $('#sign-up, #sign-in').removeClass('animated pulse'), 1000)
+}
+
 const displayMemes = function (memeData) {
   console.log('displayMemes')
   store.memes = memeData.memes.sort((x, y) => y.id - x.id)
@@ -105,5 +120,6 @@ module.exports = {
   badImagePreview,
   updateMeme,
   scrollToMemes,
-  onUpdateSuccess
+  onUpdateSuccess,
+  youMustSignIn
 }

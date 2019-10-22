@@ -5,20 +5,28 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const showMemes = function () {
   store.global = false
-  api.getMyMemes()
-    .then(ui.displayMemes)
-    .then(activateButtons)
-    .then(ui.scrollToMemes)
-    .catch(console.error)
+  if (store.user) {
+    api.getMyMemes()
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .then(ui.scrollToMemes)
+      .catch(console.error)
+  } else {
+    ui.youMustSignIn()
+  }
 }
 
 const showGlobalMemes = function () {
   store.global = true
-  api.getGlobalMemes()
-    .then(ui.displayMemes)
-    .then(activateButtons)
-    .then(ui.scrollToMemes)
-    .catch(console.error)
+  if (store.user) {
+    api.getGlobalMemes()
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .then(ui.scrollToMemes)
+      .catch(console.error)
+  } else {
+    ui.youMustSignIn()
+  }
 }
 
 const activateButtons = function () {
@@ -122,36 +130,24 @@ const submitComment = function (event) {
 
 const generateMeme = function (event) {
   event.preventDefault()
-  console.log('generate button')
-  console.log(event.target)
-  const formData = getFormFields(event.target)
-//   const inputData = event.target.form
-//   const memeData = `{
-//     "meme": {
-//       'image': "${inputData[0].value.toString()}",
-//       'text_1': "${inputData[1].value.toString()}",
-//       'font_size_1': "${inputData[2].value.toString()}",
-//       'text_2': "${inputData[3].value.toString()}",
-//       'font_size_2': "${inputData[4].value.toString()}"}
-// }`
-  console.log(formData)
-  // console.log(memeData)
+  if (store.user) {
+    console.log('generate button')
+    console.log(event.target)
+    const formData = getFormFields(event.target)
+    console.log(formData)
 
-  // console.log(event.target.form[0].value)
-  // console.log(event.target.form[1].value)
-  // console.log(event.target.form[2].value)
-  // console.log(event.target.form[3].value)
-  // console.log(event.target.form[4].value)
-
-  api.postMeme(formData)
-    .then(console.log)
-    .then(api.getMyMemes)
-    .then(ui.displayMemes)
-    .then(activateButtons)
-    .then(ui.scrollToMemes)
-    .then($('#meme-generator0')[0].reset())
-    .then($('#image-preview0').attr('src', ''))
-    .catch(console.error)
+    api.postMeme(formData)
+      .then(console.log)
+      .then(api.getMyMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
+      .then(ui.scrollToMemes)
+      .then($('#meme-generator0')[0].reset())
+      .then($('#image-preview0').attr('src', ''))
+      .catch(console.error)
+  } else {
+    ui.youMustSignIn()
+  }
 }
 
 const finalizeMemeUpdate = function (event) {
