@@ -48,6 +48,9 @@ const clickSignOut = function () {
 }
 const clickChangePass = function () {
   $('#modal-title').text('Change password')
+  resetForm()
+  $('#sign-out').show()
+  $('#enter-old, #enter-new').show()
   store.status.reset()
   store.status.changePass = true
   console.log('clickChangePass works')

@@ -34,8 +34,10 @@ const displayMemes = function (memeData) {
 
 const refreshMemes = function () {
   $('#meme-stream').children().remove()
-  $('#meme-stream').append(showMemesTemplate({ memes: store.memes, comments: store.memes.comments }))
-  $('.update-meme-input').hide()
+  if (store.memes) {
+    $('#meme-stream').append(showMemesTemplate({ memes: store.memes, comments: store.memes.comments }))
+    $('.update-meme-input').hide()
+  }
   // memeEventListeners()
 }
 
@@ -121,5 +123,6 @@ module.exports = {
   updateMeme,
   scrollToMemes,
   onUpdateSuccess,
-  youMustSignIn
+  youMustSignIn,
+  refreshMemes
 }
