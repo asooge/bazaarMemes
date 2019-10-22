@@ -64,10 +64,16 @@ const executeVote = function (event) {
   if (!upvote) {
     api.createUpvote(memeID, voteValue)
       .then(updateUserVotes)
+      .then(api.getMyMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
       .catch(console.error)
   } else {
     api.updateUpvote(memeID, voteValue, upvoteID)
       .then(updateUserVotes)
+      .then(api.getMyMemes)
+      .then(ui.displayMemes)
+      .then(activateButtons)
       .then(console.log)
       .catch(console.error)
   }
