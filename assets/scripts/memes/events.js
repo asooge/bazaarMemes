@@ -41,9 +41,21 @@ const executeVote = function (event) {
   console.log(voteValue)
   const memeID = event.currentTarget.dataset.id
   console.log(memeID)
-  api.createUpvote(memeID, voteValue)
-    .then(console.log)
-    .catch(console.error)
+  const upvote = store.user.upvotes.find(x => x.meme_id == memeID)
+  let upvoteID = ''
+  if (upvote) {
+    upvoteID = upvote.id
+  }
+  console.log(upvoteID)
+  if (!upvote) {
+    api.createUpvote(memeID, voteValue)
+      .then(console.log)
+      .catch(console.error)
+  } else {
+    api.updateUpvote(memeID, voteValue, upvoteID)
+      .then(console.log)
+      .catch(console.error)
+  }
 }
 
 const submitComment = function (event) {

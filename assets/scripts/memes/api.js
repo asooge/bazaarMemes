@@ -17,6 +17,22 @@ const createUpvote = function (memeID, voteValue) {
   })
 }
 
+const updateUpvote = function (memeID, voteValue, upvoteID) {
+  return $.ajax({
+    url: config.apiUrl + '/upvotes/' + upvoteID,
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'PATCH',
+    data: {
+      "upvote": {
+        "value": voteValue,
+        "meme_id": memeID
+      }
+    }
+  })
+}
+
 const getMyMemes = function () {
   return $.ajax({
     url: config.apiUrl + '/memes',
@@ -88,5 +104,6 @@ module.exports = {
   destroyMeme,
   createComment,
   getGlobalMemes,
-  createUpvote
+  createUpvote,
+  updateUpvote
 }
