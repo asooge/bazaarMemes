@@ -1,6 +1,22 @@
 const config = require('../config')
 const store = require('./../store')
 
+const createUpvote = function (memeID, voteValue) {
+  return $.ajax({
+    url: config.apiUrl + '/upvotes',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    method: 'POST',
+    data: {
+      "upvote": {
+        "value": voteValue,
+        "meme_id": memeID
+      }
+    }
+  })
+}
+
 const getMyMemes = function () {
   return $.ajax({
     url: config.apiUrl + '/memes',
@@ -71,5 +87,6 @@ module.exports = {
   updateMeme,
   destroyMeme,
   createComment,
-  getGlobalMemes
+  getGlobalMemes,
+  createUpvote
 }

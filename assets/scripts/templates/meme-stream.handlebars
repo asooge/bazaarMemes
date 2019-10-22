@@ -64,10 +64,10 @@
   </div>
 
   <div class='upvotes'>
-    <div class='upvote' data-id={{meme.id}}>
+    <div class='upvote' data-id={{meme.id}} data-value='1'>
       <p>👍 upvote</p>
     </div>
-    <div class='upvote' data-id={{meme.id}}>
+    <div class='upvote' data-id={{meme.id}} data-value='-1'>
       <p>👎 downvote</p>
     </div>
     <p class ='total-upvotes' id='total-upvotes{{meme.id}}'>Total upvotes: {{reducer meme.upvotes}}</p>

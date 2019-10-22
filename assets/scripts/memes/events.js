@@ -32,6 +32,18 @@ const activateButtons = function () {
   $('.image-preview').on('error', ui.badImagePreview)
   $('.finalize-update-meme').on('submit', finalizeMemeUpdate)
   $('.comment').on('submit', submitComment)
+  $('.upvote').on('click', executeVote)
+}
+
+const executeVote = function (event) {
+  console.log(event)
+  const voteValue = event.currentTarget.dataset.value
+  console.log(voteValue)
+  const memeID = event.currentTarget.dataset.id
+  console.log(memeID)
+  api.createUpvote(memeID, voteValue)
+    .then(console.log)
+    .catch(console.error)
 }
 
 const submitComment = function (event) {
