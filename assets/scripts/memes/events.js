@@ -37,8 +37,16 @@ const activateButtons = function () {
 
 const updateUserVotes = function (data) {
   console.log(data)
-  store.user.upvotes.push({id: data.upvote.id, value: data.upvote.value, user_id: data.upvote.user.id, meme_id: data.upvote.meme.id})
-  console.log(store)
+  const upvoteLocation = store.user.upvotes.indexOf(store.user.upvotes.find(x => x.id == data.upvote.id))
+  console.log('upvote location is: ' + upvoteLocation)
+  if (upvoteLocation >= 0) {
+    store.user.upvotes.splice(upvoteLocation, 1)
+    store.user.upvotes.push({id: data.upvote.id, value: data.upvote.value, user_id: data.upvote.user.id, meme_id: data.upvote.meme.id})
+    console.log(store)
+  } else {
+    store.user.upvotes.push({id: data.upvote.id, value: data.upvote.value, user_id: data.upvote.user.id, meme_id: data.upvote.meme.id})
+    console.log(store)
+  }
 }
 
 const executeVote = function (event) {
@@ -59,6 +67,7 @@ const executeVote = function (event) {
       .catch(console.error)
   } else {
     api.updateUpvote(memeID, voteValue, upvoteID)
+      .then(updateUserVotes)
       .then(console.log)
       .catch(console.error)
   }
