@@ -35,6 +35,12 @@ const activateButtons = function () {
   $('.upvote').on('click', executeVote)
 }
 
+const updateUserVotes = function (data) {
+  console.log(data)
+  store.user.upvotes.push({id: data.upvote.id, value: data.upvote.value, user_id: data.upvote.user.id, meme_id: data.upvote.meme.id})
+  console.log(store)
+}
+
 const executeVote = function (event) {
   console.log(event)
   const voteValue = event.currentTarget.dataset.value
@@ -49,7 +55,7 @@ const executeVote = function (event) {
   console.log(upvoteID)
   if (!upvote) {
     api.createUpvote(memeID, voteValue)
-      .then(console.log)
+      .then(updateUserVotes)
       .catch(console.error)
   } else {
     api.updateUpvote(memeID, voteValue, upvoteID)
