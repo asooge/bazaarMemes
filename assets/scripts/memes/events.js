@@ -62,20 +62,39 @@ const executeVote = function (event) {
   }
   console.log(upvoteID)
   if (!upvote) {
-    api.createUpvote(memeID, voteValue)
-      .then(updateUserVotes)
-      .then(api.getMyMemes)
-      .then(ui.displayMemes)
-      .then(activateButtons)
-      .catch(console.error)
+    if (store.global === true) {
+      api.createUpvote(memeID, voteValue)
+        .then(updateUserVotes)
+        .then(api.getGlobalMemes)
+        .then(ui.displayMemes)
+        .then(activateButtons)
+        .catch(console.error)
+    } else {
+      api.createUpvote(memeID, voteValue)
+        .then(updateUserVotes)
+        .then(api.getMyMemes)
+        .then(ui.displayMemes)
+        .then(activateButtons)
+        .catch(console.error)
+    }
   } else {
-    api.updateUpvote(memeID, voteValue, upvoteID)
-      .then(updateUserVotes)
-      .then(api.getMyMemes)
-      .then(ui.displayMemes)
-      .then(activateButtons)
-      .then(console.log)
-      .catch(console.error)
+    if (store.global === true) {
+      api.updateUpvote(memeID, voteValue, upvoteID)
+        .then(updateUserVotes)
+        .then(api.getGlobalMemes)
+        .then(ui.displayMemes)
+        .then(activateButtons)
+        .then(console.log)
+        .catch(console.error)
+    } else {
+      api.updateUpvote(memeID, voteValue, upvoteID)
+        .then(updateUserVotes)
+        .then(api.getMyMemes)
+        .then(ui.displayMemes)
+        .then(activateButtons)
+        .then(console.log)
+        .catch(console.error)
+    }
   }
 }
 
