@@ -57,6 +57,12 @@ const updateUserVotes = function (data) {
   }
 }
 
+const updateUserMemes = function (data) {
+  console.log('updateUserMemes')
+  console.log(data)
+  store.user.memes.push(data.meme)
+}
+
 const executeVote = function (event) {
   console.log(event)
   const voteValue = event.currentTarget.dataset.value
@@ -137,7 +143,7 @@ const generateMeme = function (event) {
     console.log(formData)
 
     api.postMeme(formData)
-      .then(console.log)
+      .then(updateUserMemes)
       .then(api.getMyMemes)
       .then(ui.displayMemes)
       .then(activateButtons)
@@ -187,6 +193,7 @@ const finalizeMemeUpdate = function (event) {
 
 const deleteMeme = function (event) {
   console.log('deleteMeme', event.target.dataset.id)
+  console.log(store)
   const memeID = event.target.dataset.id
   console.log(store.user.memes)
   console.log(store.user.memes.find(x => x.id == memeID))
