@@ -25,6 +25,8 @@ $(() => {
   $('.image-url').on('input change', ui.updatePreview)
   $('.image-preview').on('error', ui.badImagePreview)
 
+  $('.sort').on('input', memeEvents.updateSort)
+
   $('.meme-generator').on('submit', memeEvents.generateMeme)
   // $('.delete-meme').on('click', memeEvents.deleteMeme)
   // $('.update-meme').on('click', memeEvents.updateMeme)

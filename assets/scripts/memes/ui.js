@@ -24,7 +24,21 @@ const youMustSignIn = function () {
 
 const displayMemes = function (memeData) {
   console.log('displayMemes')
-  store.memes = memeData.memes.sort((x, y) => y.id - x.id)
+  console.log(memeData)
+  console.log(memeData.memes[0].length)
+  if (store.sort === 'new') {
+    console.log('new')
+    store.memes = memeData.memes.sort((x, y) => y.id - x.id)
+  } else if (store.sort === 'comments') {
+    console.log('comments')
+    store.memes = memeData.memes.sort((x, y) => y.comments.length - x.comments.length)
+  } else if (store.sort === 'upvotes') {
+    console.log('upvotes')
+    store.memes = memeData.memes.sort((x, y) => y.upvotes.reduce((a, b) => a + b.value, 0) - x.upvotes.reduce((a, b) => a + b.value, 0))
+  } else {
+    store.memes = memeData.memes.sort((x, y) => y.id - x.id)
+  }
+
   console.log(store.memes)
   console.log(store)
   //$('#meme-stream').text(store.memes[0].image)

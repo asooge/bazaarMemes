@@ -191,6 +191,12 @@ const finalizeMemeUpdate = function (event) {
   }
 }
 
+const updateSort = function (event) {
+  console.log(event)
+  store.sort = event.target.value
+  console.log(store)
+}
+
 const deleteMeme = function (event) {
   console.log('deleteMeme', event.target.dataset.id)
   console.log(store)
@@ -224,5 +230,6 @@ const deleteMeme = function (event) {
 module.exports = {
   showMemes,
   generateMeme,
-  showGlobalMemes
+  showGlobalMemes,
+  updateSort
 }
