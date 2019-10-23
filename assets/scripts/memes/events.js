@@ -143,7 +143,8 @@ const generateMeme = function (event) {
       .then(activateButtons)
       .then(ui.scrollToMemes)
       .then($('#meme-generator0')[0].reset())
-      .then($('#image-preview0').attr('src', ''))
+      .then($('#top-text-preview0, #bottom-text-preview0').text(''))
+      // .then($('#image-preview0').attr('src', ''))
       .catch(console.error)
   } else {
     ui.youMustSignIn()
@@ -155,8 +156,9 @@ const finalizeMemeUpdate = function (event) {
   console.log('finalize update meme button')
   const memeID = event.target.dataset.id
   console.log(memeID)
-
-  if (store.user.memes && store.user.memes.includes(x => x.id == memeID)) {
+  console.log(store.user.memes)
+  console.log(store.user.memes.find(x => x.id == memeID))
+  if (store.user.memes && store.user.memes.find(x => x.id == memeID)) {
     const formData = getFormFields(event.target)
     console.log(formData)
     if (store.global === true) {
@@ -185,23 +187,25 @@ const finalizeMemeUpdate = function (event) {
 
 const deleteMeme = function (event) {
   console.log('deleteMeme', event.target.dataset.id)
-  const id = event.target.dataset.id
-  if (store.user.memes && store.user.memes.includes(x => x.id == id)) {
+  const memeID = event.target.dataset.id
+  console.log(store.user.memes)
+  console.log(store.user.memes.find(x => x.id == memeID))
+  if (store.user.memes && store.user.memes.find(x => x.id == memeID)) {
     if (store.global === true) {
-      api.destroyMeme(id)
+      api.destroyMeme(memeID)
         .then(api.getGlobalMemes)
         .then(ui.displayMemes)
         .then(activateButtons)
         .catch(console.error)
     } else {
-      api.destroyMeme(id)
+      api.destroyMeme(memeID)
         .then(api.getMyMemes)
         .then(ui.displayMemes)
         .then(activateButtons)
         .catch(console.error)
     }
   } else {
-    ui.cannotDeleteMeme(id)
+    ui.cannotDeleteMeme(memeID)
   }
 }
 

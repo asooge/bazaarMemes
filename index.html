@@ -61,6 +61,17 @@
         <button id=change-pass class="btn btn-info" data-toggle="modal" data-target="#modal-center">change password</button>
         <button id=sign-out class="btn btn-info clear-auth">sign out</button>
 
+        <div id='sort-memes'>
+          <p>Sort memes by: </p>
+          <label for='newest'>Newest</label>
+          <input name='sort-memes' value='new' type=radio id='newest'>
+
+          <label for='comments'>Comments</label>
+          <input name='sort-memes' value='comments' type=radio id='comments'>
+
+          <label for='upvotes'>Upvotes</label>
+          <input name='sort-memes' value='upvotes' type=radio id='upvotes'>
+        </div>
         <br>
 
         <button id='meme-button' class="btn btn-warning">Show my memes</button>
@@ -126,7 +137,7 @@
         <h4>Generate your own meme:</h4>
         <form id="meme-generator0" class="meme-generator">
           <label for="image-url">image url:</label>
-          <input type="text" name="meme[image]" id="image-url0" class="image-url" data-id=0> <br>
+          <input type="text" name="meme[image]" id="image-url0" value="https://imgflip.com/s/meme/Grumpy-Cat.jpg" class="image-url" data-id=0> <br>
 
           <label for="dropdown-menu0">Or select a template:</label>
           <select id="dropdown-menu0" class="image-url" data-id=0>
