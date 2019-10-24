@@ -8,14 +8,15 @@ const onSignInSuccess = function (formData) {
   $('#message-display').text(`Welcome, ${store.user.email}`).addClass('animated bounceInRight')
   setTimeout(() => $('#message-display').removeClass('animated bounceInRight'), 1000)
   $('#user-info').text('')
-  console.log('user signed in')
-  console.log(store)
+  // console.log('user signed in')
+  // console.log(store)
   $('#sign-up, #sign-in').hide()
   $('#change-pass, #sign-out').show()
   $('#modal-center').modal('toggle')
 }
 
 const onSignInFailure = function () {
+  $('#user-auth')[0].reset()
   $('#modal-title').text('Sign-in failed').addClass('animated bounceInRight')
   setTimeout(() => $('#modal-title').removeClass('animated bounceInRight'), 1000)
 }
@@ -43,7 +44,7 @@ const onSignOutSuccess = function () {
   $('#sign-up, #sign-in').show()
   delete store.memes
   ui.refreshMemes()
-  console.log(store)
+  // console.log(store)
 }
 
 const onSignOutFailure = function () {

@@ -44,37 +44,37 @@ const activateButtons = function () {
 }
 
 const updateUserVotes = function (data) {
-  console.log(data)
+  // console.log(data)
   const upvoteLocation = store.user.upvotes.indexOf(store.user.upvotes.find(x => x.id == data.upvote.id))
-  console.log('upvote location is: ' + upvoteLocation)
+  // console.log('upvote location is: ' + upvoteLocation)
   if (upvoteLocation >= 0) {
     store.user.upvotes.splice(upvoteLocation, 1)
     store.user.upvotes.push({id: data.upvote.id, value: data.upvote.value, user_id: data.upvote.user.id, meme_id: data.upvote.meme.id})
-    console.log(store)
+    // console.log(store)
   } else {
     store.user.upvotes.push({id: data.upvote.id, value: data.upvote.value, user_id: data.upvote.user.id, meme_id: data.upvote.meme.id})
-    console.log(store)
+    // console.log(store)
   }
 }
 
 const updateUserMemes = function (data) {
-  console.log('updateUserMemes')
-  console.log(data)
+  // console.log('updateUserMemes')
+  // console.log(data)
   store.user.memes.push(data.meme)
 }
 
 const executeVote = function (event) {
-  console.log(event)
+  // console.log(event)
   const voteValue = event.currentTarget.dataset.value
-  console.log(voteValue)
+  // console.log(voteValue)
   const memeID = event.currentTarget.dataset.id
-  console.log(memeID)
+  // console.log(memeID)
   const upvote = store.user.upvotes.find(x => x.meme_id == memeID)
   let upvoteID = ''
   if (upvote) {
     upvoteID = upvote.id
   }
-  console.log(upvoteID)
+  // console.log(upvoteID)
   if (!upvote) {
     if (store.global === true) {
       api.createUpvote(memeID, voteValue)
@@ -98,7 +98,7 @@ const executeVote = function (event) {
         .then(api.getGlobalMemes)
         .then(ui.displayMemes)
         .then(activateButtons)
-        .then(console.log)
+        // .then(console.log)
         .catch(console.error)
     } else {
       api.updateUpvote(memeID, voteValue, upvoteID)
@@ -106,7 +106,7 @@ const executeVote = function (event) {
         .then(api.getMyMemes)
         .then(ui.displayMemes)
         .then(activateButtons)
-        .then(console.log)
+        // .then(console.log)
         .catch(console.error)
     }
   }
@@ -114,19 +114,19 @@ const executeVote = function (event) {
 
 const submitComment = function (event) {
   event.preventDefault()
-  console.log('submit comment')
+  // console.log('submit comment')
   const formData = getFormFields(event.target)
-  console.log(formData)
+  // console.log(formData)
   if (store.global === true) {
     api.createComment(formData)
-      .then(console.log)
+      // .then(console.log)
       .then(api.getGlobalMemes)
       .then(ui.displayMemes)
       .then(activateButtons)
       .catch(console.error)
   } else {
     api.createComment(formData)
-      .then(console.log)
+      // .then(console.log)
       .then(api.getMyMemes)
       .then(ui.displayMemes)
       .then(activateButtons)
@@ -137,10 +137,10 @@ const submitComment = function (event) {
 const generateMeme = function (event) {
   event.preventDefault()
   if (store.user) {
-    console.log('generate button')
-    console.log(event.target)
+    // console.log('generate button')
+    // console.log(event.target)
     const formData = getFormFields(event.target)
-    console.log(formData)
+    // console.log(formData)
 
     api.postMeme(formData)
       .then(updateUserMemes)
@@ -159,27 +159,27 @@ const generateMeme = function (event) {
 
 const finalizeMemeUpdate = function (event) {
   event.preventDefault()
-  console.log('finalize update meme button')
+  // console.log('finalize update meme button')
   const memeID = event.target.dataset.id
-  console.log(memeID)
-  console.log(store.user.memes)
-  console.log(store.user.memes.find(x => x.id == memeID))
+  // console.log(memeID)
+  // console.log(store.user.memes)
+  // console.log(store.user.memes.find(x => x.id == memeID))
   if (store.user.memes && store.user.memes.find(x => x.id == memeID)) {
     const formData = getFormFields(event.target)
-    console.log(formData)
+    // console.log(formData)
     if (store.global === true) {
       api.updateMeme(formData, memeID)
-        .then(console.log)
+        // .then(console.log)
         .then(api.getGlobalMemes)
         .then(ui.onUpdateSuccess(memeID))
         .then(ui.displayMemes)
         .then(activateButtons)
-        .then(console.log('memeID'))
+        // .then(console.log('memeID'))
 
         .catch(console.error)
     } else {
       api.updateMeme(formData, memeID)
-        .then(console.log)
+        // .then(console.log)
         .then(api.getMyMemes)
         .then(ui.displayMemes)
         .then(activateButtons)
@@ -192,17 +192,17 @@ const finalizeMemeUpdate = function (event) {
 }
 
 const updateSort = function (event) {
-  console.log(event)
+  // console.log(event)
   store.sort = event.target.value
-  console.log(store)
+  // console.log(store)
 }
 
 const deleteMeme = function (event) {
-  console.log('deleteMeme', event.target.dataset.id)
-  console.log(store)
+  // console.log('deleteMeme', event.target.dataset.id)
+  // console.log(store)
   const memeID = event.target.dataset.id
-  console.log(store.user.memes)
-  console.log(store.user.memes.find(x => x.id == memeID))
+  // console.log(store.user.memes)
+  // console.log(store.user.memes.find(x => x.id == memeID))
   if (store.user.memes && store.user.memes.find(x => x.id == memeID)) {
     if (store.global === true) {
       api.destroyMeme(memeID)

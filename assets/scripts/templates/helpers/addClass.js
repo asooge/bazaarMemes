@@ -4,8 +4,8 @@ const store = require('../../store.js')
 const addClass = function (meme, voteValue, memeID) {
   // return `${store.global}` + x
   const memeVote = (store.user.upvotes.find(x => x.meme_id == memeID))
-  console.log(voteValue)
-  console.log(memeVote)
+  // console.log(voteValue)
+  // console.log(memeVote)
   if (meme.upvotes.length === 0) {
     return ''
   }

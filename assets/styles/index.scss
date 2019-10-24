@@ -9,8 +9,49 @@ body {
   background-size: cover;
 }
 
+h1 {
+  text-align: center;
+}
+
+#meme-options-display {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#info-container {
+  display: flex;
+  flex-flow: row wrap;
+  border: solid red 3px;
+}
+
+#sort-memes {
+  margin: 10px;
+  margin-top: 0;
+  padding: 10px;
+  padding-bottom: 5px;
+  border-radius: 3.5%;
+  display: flex;
+  flex-flow: column wrap;
+  background-color: rgba(255,255,255,.5)
+}
+
+#mission {
+  text-align: center;
+}
+
+#info-display {
+  border: solid black 1px;
+}
+
+#auth-buttons {
+  border: solid blue 1px;
+  padding-top: 10px;
+  margin-right: 10px;
+}
+
 #global-memes {
   margin: 5px;
+  margin-top: 0;
   border: 0;
   display: inline-block;
   position: relative;
@@ -69,6 +110,20 @@ body {
   width: 100%;
 }
 
+#meme-button {
+  height: 88px;
+  width: 100px;
+  padding: 0;
+  border: solid black 1px;
+  background-color: rgba(252, 157, 3,.4);
+  position: relative;
+  top: 0px;
+}
+
+#meme-button:hover {
+  background-color: rgba(252, 157, 3,.7)
+}
+
 .image {
   width: 100%;
 }
@@ -80,11 +135,10 @@ body {
   font-size: 5vw;
 }
 
-.text-top {
+.text-top, .text-bottom {
   position: absolute;
   text-align: center;
   z-index: 10;
-  top: 5%;
   left: 0%;
   width: 100%;
   border: 0;
@@ -97,21 +151,12 @@ body {
     1px 1px black;
 }
 
+.text-top {
+  top: 5%;
+}
+
 .text-bottom {
-  position: absolute;
-  text-align: center;
-  z-index: 10;
   bottom: 5%;
-  left: 0%;
-  width: 100%;
-  border: 0;
-  color: white;
-  font-size: 1em;
-  text-shadow:
-    -1px -1px black,
-    1px -1px black,
-    -1px 1px black,
-    1px 1px black;
 }
 
 @media only screen and (max-width: 600px) {

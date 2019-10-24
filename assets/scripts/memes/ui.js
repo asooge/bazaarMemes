@@ -14,33 +14,33 @@ const scrollToTop = function () {
 }
 
 const youMustSignIn = function () {
-  console.log('you must sign in')
+  // console.log('you must sign in')
   scrollToTop()
-  $('#message-display').addClass('animated bounceIn')
+  $('#message-display').text('sign in or sign up to start memeing').addClass('animated bounceIn')
   $('#sign-up, #sign-in').addClass('animated pulse')
   setTimeout(() => $('#message-display').removeClass('animated bounceIn'), 1000)
   setTimeout(() => $('#sign-up, #sign-in').removeClass('animated pulse'), 1000)
 }
 
 const displayMemes = function (memeData) {
-  console.log('displayMemes')
-  console.log(memeData)
-  console.log(memeData.memes[0].length)
+  // console.log('displayMemes')
+  // console.log(memeData)
+  // console.log(memeData.memes[0].length)
   if (store.sort === 'new') {
-    console.log('new')
+    // console.log('new')
     store.memes = memeData.memes.sort((x, y) => y.id - x.id)
   } else if (store.sort === 'comments') {
-    console.log('comments')
+    // console.log('comments')
     store.memes = memeData.memes.sort((x, y) => y.comments.length - x.comments.length)
   } else if (store.sort === 'upvotes') {
-    console.log('upvotes')
+    // console.log('upvotes')
     store.memes = memeData.memes.sort((x, y) => y.upvotes.reduce((a, b) => a + b.value, 0) - x.upvotes.reduce((a, b) => a + b.value, 0))
   } else {
     store.memes = memeData.memes.sort((x, y) => y.id - x.id)
   }
 
-  console.log(store.memes)
-  console.log(store)
+  // console.log(store.memes)
+  // console.log(store)
   //$('#meme-stream').text(store.memes[0].image)
   //const showMemesHTML = showMemesTemplate({ memes: store.memes })
   refreshMemes()
@@ -72,10 +72,10 @@ const cannotUpdateMeme = function (memeID) {
 }
 
 const updateMeme = function (event) {
-  console.log('updateMeme')
-  console.log(event)
+  // console.log('updateMeme')
+  // console.log(event)
   const dataID = event.target.dataset.id
-  console.log($(`#update-meme-input${dataID}`).attr('style'))
+  // console.log($(`#update-meme-input${dataID}`).attr('style'))
   if ($(`#update-meme-input${dataID}`).attr('style') === ("display: none;")) {
     $(`#update-meme-input${dataID}`).show()
   } else {
@@ -88,24 +88,24 @@ const onUpdateSuccess = function (memeID) {
 }
 
 const displayUpdateMessage = function (memeID) {
-  console.log('onUpdateSuccess')
-  console.log(memeID)
+  // console.log('onUpdateSuccess')
+  // console.log(memeID)
   $(`#update-message${memeID}`).text('Meme update successful').show()
   $(`#update-message${memeID}`).fadeOut(5000)
 }
 
 const badImagePreview = function (event) {
-  console.log('bad image')
+  // console.log('bad image')
   const dataID = event.target.dataset.id
-  console.log(dataID)
+  // console.log(dataID)
   $(`#image-preview${dataID}`).attr('src', 'https://i.imgflip.com/11fjj7.jpg')
   $(`#top-text-preview${dataID}`).text('')
   $(`#bottom-text-preview${dataID}`).text('')
 }
 
 const updatePreview = function (event) {
-  console.log(event.target.id)
-  console.log(event.target.dataset.id)
+  // console.log(event.target.id)
+  // console.log(event.target.dataset.id)
   const dataID = event.target.dataset.id
   if (event.target.id === `top-text${dataID}`) {
     $(`#top-text-preview${dataID}`).text(event.target.value)
