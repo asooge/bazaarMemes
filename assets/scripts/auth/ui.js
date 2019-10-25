@@ -38,11 +38,16 @@ const onSignUpFailure = function () {
 }
 
 const onSignOutSuccess = function () {
-  $('#user-info').text(`${store.user.email} - signed out`)
-  $('#message-display').text(`sign in or sign up to play`)
+  $('#user-info').text(`${store.user.email} - signed out`).addClass('animated bounceInRight')
+  setTimeout(() => $('#user-info').removeClass('animated bounceInRight'), 1000)
+
+  $('#message-display').text(`sign in or sign up to meme`).addClass('animated bounceInRight')
+  setTimeout(() => $('#message-display').removeClass('animated bounceInRight'), 1000)
+
   $('#change-pass, #sign-out').hide()
   $('#sign-up, #sign-in').show()
   delete store.memes
+  delete store.user
   ui.refreshMemes()
   // console.log(store)
 }
