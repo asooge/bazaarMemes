@@ -16,6 +16,14 @@ h1 {
   margin: 0;
 }
 
+h4, label, select {
+  text-shadow:
+    -1px -1px white,
+    1px -1px white,
+    -1px 1px white,
+    1px 1px white;
+}
+
 #meme-options-display {
   display: flex;
   flex-flow: row wrap;
@@ -26,7 +34,8 @@ h1 {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  border: solid red 3px;
+  border-bottom: solid white 1px;
+  // border: solid red 3px;
 }
 
 #sort-memes {
@@ -43,14 +52,16 @@ h1 {
 #mission {
   text-align: center;
   font-size: 18px;
+  border-bottom: solid white 1px;
+  margin-bottom: 5px;
 }
 
 #info-display {
-  border: solid black 1px;
+  // border: solid black 1px;
 }
 
 #auth-buttons {
-  border: solid blue 1px;
+  // border: solid blue 1px;
   padding-top: 10px;
   margin-right: 10px;
 }
@@ -109,11 +120,12 @@ h1 {
 
 .meme-display {
   width: 100vw;
-  border: solid blue 2px;
+  // border: solid blue 2px;
   background-color: transparent;
   display: flex;
   flex-flow: row wrap;
   margin: auto;
+  border-bottom: solid white 1px;
 }
 
 #generate-meme-preview {
@@ -122,10 +134,12 @@ h1 {
 
 #generate-meme-input {
   order: 2;
+  padding-left: 15px;
+  padding-top: 10px;
 }
 
 .meme-information {
-  border: solid green 2px;
+  // border: solid green 2px;
   width: 50%;
   overflow-y: scroll;
   background-color: transparent;
@@ -133,7 +147,7 @@ h1 {
 
 .meme {
   position: relative;
-  border: solid orange 3px;
+  // border: solid orange 3px;
   width: 50%;
   flex-grow: 1;
   display: inline-block;
@@ -163,7 +177,7 @@ h1 {
 }
 .text-contain-bottom {
   font-size: 5vw;
-  border: solid green 2px;
+  // border: solid green 2px;
   z-index: 11;
 }
 
@@ -192,7 +206,7 @@ h1 {
 }
 
 .picture {
-  border: solid red 3px;
+  // border: solid red 3px;
   position: relative;
 }
 
