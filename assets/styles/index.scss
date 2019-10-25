@@ -16,11 +16,13 @@ h1 {
 #meme-options-display {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
 
 #info-container {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
   border: solid red 3px;
 }
 
@@ -50,7 +52,7 @@ h1 {
 }
 
 #global-memes {
-  margin: 5px;
+  margin: 0 5px 5px 3px;
   margin-top: 0;
   border: 0;
   display: inline-block;
@@ -60,7 +62,7 @@ h1 {
 #view-global-memes {
   position: absolute;
   z-index: 10;
-  bottom: -16px;
+  bottom: 2px;
   font-size: 13px;
   text-align: center;
   width: 100%;
@@ -68,16 +70,19 @@ h1 {
 
 .upvotes {
   border: solid black 1px;
+  height: 37px;
 }
 
 .upvote {
   display: inline-block;
   margin: 0;
-  padding-top: 10px;
+  padding-top: 5px;
   padding-right: 4px;
   padding-left: 4px;
+  padding-bottom: 0;
   border-radius: 10%;
   border: solid black 1px;
+  height: 35px;
 }
 
 .total-upvotes {
@@ -99,15 +104,37 @@ h1 {
 }
 
 .meme-display {
+  width: 100vw;
+  border: solid blue 2px;
+  background-color: transparent;
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#generate-meme-preview {
+  order: 1;
+}
+
+#generate-meme-input {
+  order: 2;
+}
+
+.meme-information {
+  border: solid green 2px;
   width: 50%;
-  //border: solid red 1px;
-  background-color: white;
+  overflow-y: scroll;
+  background-color: transparent;
 }
 
 .meme {
   position: relative;
-  // border: solid orange 1px;
-  width: 100%;
+  border: solid orange 3px;
+  width: 50%;
+  flex-grow: 1;
+  display: inline-block;
+  background-color: transparent;
 }
 
 #meme-button {
@@ -133,6 +160,8 @@ h1 {
 }
 .text-contain-bottom {
   font-size: 5vw;
+  border: solid green 2px;
+  z-index: 11;
 }
 
 .text-top, .text-bottom {
@@ -159,6 +188,11 @@ h1 {
   bottom: 5%;
 }
 
+.picture {
+  border: solid red 3px;
+  position: relative;
+}
+
 @media only screen and (max-width: 600px) {
   .meme-display {
     width: 100%
@@ -169,14 +203,32 @@ h1 {
   .text-bottom {
     font-size: 2em
   }
+  .meme {
+    width: 100%;
+  }
+  .meme-information {
+    width: 100%;
+  }
+  #generate-meme-preview {
+    order: 2;
+  }
+  #generate-meme-input {
+    order: 1;
+  }
 }
 
 .comment {
   border-bottom: solid black 1px;
 }
 
+span {
+  font-family: impact, sans-serif;
+}
+
 p {
   color: black;
+  padding-bottom: 1px;
+  margin: 2px;
   text-shadow:
     -1px -1px white,
     1px -1px white,

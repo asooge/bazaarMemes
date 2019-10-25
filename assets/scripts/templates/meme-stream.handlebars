@@ -1,90 +1,93 @@
 {{#each memes as |meme|}}
   {{log meme}}
-
-  <div class='meme' data-id="{{meme.id}}">
-
-    <img class="image image-preview" id="image-preview{{meme.id}}" src="{{meme.image}}" data-id="{{meme.id}}">
-    <div class = text-contain-top id="top-text-preview-size{{meme.id}}" style="font-size:{{meme.font_size_1}}vw">
-      <span class=text-top id="top-text-preview{{meme.id}}">{{meme.text_1}}</span>
+  <section class="create-a-meme meme-display" data-id={{meme.id}}>
+    <div class='meme' data-id="{{meme.id}}">
+      <div class='picture'>
+        <img class="image image-preview" id="image-preview{{meme.id}}" src="{{meme.image}}" data-id="{{meme.id}}">
+        <div class = text-contain-top id="top-text-preview-size{{meme.id}}" style="font-size:{{meme.font_size_1}}vw">
+          <span class=text-top id="top-text-preview{{meme.id}}">{{meme.text_1}}</span>
+        </div>
+        <div class=text-contain-bottom id="bottom-text-preview-size{{meme.id}}" style="font-size:{{meme.font_size_2}}vw">
+        <span class=text-bottom id="bottom-text-preview{{meme.id}}">{{meme.text_2}}</span>
+        </div>
+      </div>
     </div>
-    <div class=text-contain-bottom id="bottom-text-preview-size{{meme.id}}" style="font-size:{{meme.font_size_2}}vw">
-    <span class=text-bottom id="bottom-text-preview{{meme.id}}">{{meme.text_2}}</span>
+
+    <div class='meme-information'>
+        <p>Memesmith: {{meme.user.email}} || meme_id: {{meme.id}}</p>
+        <button data-id="{{meme.id}}" class='delete-meme btn btn-danger'>Delete meme</button>
+        <button data-id="{{meme.id}}" class='update-meme btn btn-warning'>Update meme</button>
+        <p id='update-message{{meme.id}}'></p>
+
+
+      <div class='update-meme-input' id="update-meme-input{{meme.id}}" data-id="{{meme.id}}">
+        <h4>Update your meme:</h4>
+        <form class = 'finalize-update-meme' id="meme-generator{{meme.id}}" data-id={{meme.id}}>
+          <label for="image-url">image url:</label>
+          <input type="text" name="meme[image]" id="image-url{{meme.id}}" class="image-url" data-id="{{meme.id}}" value="{{meme.image}}" required>
+
+
+
+          <label for="dropdown-menu{{meme.id}}">Or select a template:</label>
+          <select id="dropdown-menu{{meme.id}}" class="image-url" data-id={{meme.id}}>
+            <option value="">Select a template</option>
+            <option value="https://imgflip.com/s/meme/Grumpy-Cat.jpg">Grumpy Cat</option>
+            <option value="https://i.imgflip.com/1am4v4.jpg">Success Kid</option>
+            <option value="https://imgflip.com/s/meme/Yo-Dawg-Heard-You.jpg">Pimp my meme</option>
+            <option value="https://imgflip.com/s/meme/Doge.jpg">Doge</option>
+            <option value="https://imgflip.com/s/meme/Confession-Bear.jpg">Confession Bear</option>
+            <option value="https://i.kym-cdn.com/photos/images/newsfeed/000/089/665/tumblr_l96b01l36p1qdhmifo1_500.jpg">Y U No</option>
+            <option value="https://media1.giphy.com/media/i2dE5VvBNxBw4/giphy.gif">Dancing: Rick and Morty</option>
+            <option value="https://media1.giphy.com/media/1SD4lL2dG7Qe4/source.gif">Respect my authoritah!</option>
+            <option value="https://img.buzzfeed.com/buzzfeed-static/static/2014-07/18/10/enhanced/webdr09/anigif_enhanced-buzz-22799-1405693809-7.gif">Throwing Simba</option>
+            <option value="https://66.media.tumblr.com/992b7bb37b2b8d2f60aa02982d33a67e/tumblr_owae04j8PJ1qejpvyo1_500.gifv">Ooh Wee!</option>
+            <option value="https://media.giphy.com/media/j3ET8bU0VvTLd7QMCn/giphy.gif ">Chef: southpark</option>
+            <option value="https://media.giphy.com/media/DgLsbUL7SG3kI/giphy.gif ">Meeseeks can do</option>
+
+          </select>
+          <br>
+
+          <label for="top-text">top text:</label>
+          <input type="text" name="meme[text_1]" id="top-text{{meme.id}}" class="top-text" data-id="{{meme.id}}" value='{{meme.text_1}}'>
+          <br>
+          <label for="top-text-size">top text size:</label>
+          <input type="range" name="meme[font_size_1]" id="top-text-size{{meme.id}}" data-id="{{meme.id}}" class="top-text-size" min="0.5" max="10" step="0.1" value={{meme.font_size_1}}>
+          <br>
+          <label for="bottom-text">bottom text:</label>
+          <input type="text" name="meme[text_2]" data-id="{{meme.id}}" id="bottom-text{{meme.id}}" class="bottom-text" value='{{meme.text_2}}'>
+          <br>
+          <label for="top-text-size">bottom text size:</label>
+          <input type="range" name="meme[font_size_2]" id="bottom-text-size{{meme.id}}" class="bottom-text-size" data-id="{{meme.id}}" min="0.5" max="10" step="0.1" value={{meme.font_size_2}}>
+          <button class="btn btn-warning finalize-update" data-id={{meme.id}}>Finalize</button>
+        </form>
+
+      </div>
+
+      <div class='upvotes'>
+        <div class='upvote {{addClass meme 1 meme.id}}' data-id={{meme.id}} data-value='1'>
+          <p>👍 upvote</p>
+        </div>
+        <div class='upvote {{addClass meme -1 meme.id}}' data-id={{meme.id}} data-value='-1'>
+          <p>👎 downvote</p>
+        </div>
+        <p class ='total-upvotes' id='total-upvotes{{meme.id}}'>Total upvotes: {{reducer meme.upvotes}}</p>
+      </div>
+
+      <div id="comments{{meme.id}}">
+        <h5 class=comment> Comments: </h5>
+        <form class="create-comment comment" data-id="{{meme.id}}">
+          <label for="comment-on-{{meme.id}}">Add a comment: </label>
+          <input name="comment[message]" class='comment' id="comment-on-{{meme.id}}" type=text style="width: 100%;" placeholder='enter your comment'>
+          <input name="comment[meme_id]" value={{meme.id}} type=text style="display: none;">
+          <button class="btn btn-primary submit-comment">Submit comment</button>
+        </form>
+
+      {{#each comments as |comment|}}
+        {{log comment}}
+          <p class=comment>{{comment.user.email}}: {{comment.message}} || posted: {{limit comment.created_at 10}}</p>
+      {{/each}}
+
+      </div>
     </div>
-
-  </div>
-
-  <div class='meme'>
-    <p>Memesmith: {{meme.user.email}} || meme_id: {{meme.id}}</p>
-    <button data-id="{{meme.id}}" class='delete-meme btn btn-danger'>Delete meme</button>
-    <button data-id="{{meme.id}}" class='update-meme btn btn-warning'>Update meme</button>
-    <p id='update-message{{meme.id}}'></p>
-  </div>
-
-  <div class='meme update-meme-input' id="update-meme-input{{meme.id}}" data-id="{{meme.id}}">
-    <h4>Update your meme:</h4>
-    <form class = 'finalize-update-meme' id="meme-generator{{meme.id}}" data-id={{meme.id}}>
-      <label for="image-url">image url:</label>
-      <input type="text" name="meme[image]" id="image-url{{meme.id}}" class="image-url" data-id="{{meme.id}}" value="{{meme.image}}">
-      <br>
-
-
-      <label for="dropdown-menu{{meme.id}}">Or select a template:</label>
-      <select id="dropdown-menu{{meme.id}}" class="image-url" data-id={{meme.id}}>
-        <option value="">Select a template</option>
-        <option value="https://imgflip.com/s/meme/Grumpy-Cat.jpg">Grumpy Cat</option>
-        <option value="https://i.imgflip.com/1am4v4.jpg">Success Kid</option>
-        <option value="https://imgflip.com/s/meme/Yo-Dawg-Heard-You.jpg">Pimp my meme</option>
-        <option value="https://imgflip.com/s/meme/Doge.jpg">Doge</option>
-        <option value="https://imgflip.com/s/meme/Confession-Bear.jpg">Confession Bear</option>
-        <option value="https://i.kym-cdn.com/photos/images/newsfeed/000/089/665/tumblr_l96b01l36p1qdhmifo1_500.jpg">Y U No</option>
-        <option value="https://media1.giphy.com/media/i2dE5VvBNxBw4/giphy.gif">Dancing: Rick and Morty</option>
-        <option value="https://media1.giphy.com/media/1SD4lL2dG7Qe4/source.gif">Respect my authoritah!</option>
-        <option value="https://img.buzzfeed.com/buzzfeed-static/static/2014-07/18/10/enhanced/webdr09/anigif_enhanced-buzz-22799-1405693809-7.gif">Throwing Simba</option>
-        <option value="https://66.media.tumblr.com/992b7bb37b2b8d2f60aa02982d33a67e/tumblr_owae04j8PJ1qejpvyo1_500.gifv">Ooh Wee!</option>
-        <option value="https://media.giphy.com/media/j3ET8bU0VvTLd7QMCn/giphy.gif ">Chef: southpark</option>
-        <option value="https://media.giphy.com/media/DgLsbUL7SG3kI/giphy.gif ">Meeseeks can do</option>
-
-      </select>
-      <br>
-
-      <label for="top-text">top text:</label>
-      <input type="text" name="meme[text_1]" id="top-text{{meme.id}}" class="top-text" data-id="{{meme.id}}" value='{{meme.text_1}}'>
-      <br>
-      <label for="top-text-size">top text size:</label>
-      <input type="range" name="meme[font_size_1]" id="top-text-size{{meme.id}}" data-id="{{meme.id}}" class="top-text-size" min="0.5" max="10" step="0.1" value={{meme.font_size_1}}>
-      <br>
-      <label for="bottom-text">bottom text:</label>
-      <input type="text" name="meme[text_2]" data-id="{{meme.id}}" id="bottom-text{{meme.id}}" class="bottom-text" value='{{meme.text_2}}'>
-      <br>
-      <label for="top-text-size">bottom text size:</label>
-      <input type="range" name="meme[font_size_2]" id="bottom-text-size{{meme.id}}" class="bottom-text-size" data-id="{{meme.id}}" min="0.5" max="10" step="0.1" value={{meme.font_size_2}}>
-      <button class="btn btn-warning finalize-update" data-id={{meme.id}}>Finalize</button>
-    </form>
-
-  </div>
-
-  <div class='upvotes'>
-    <div class='upvote {{addClass meme 1 meme.id}}' data-id={{meme.id}} data-value='1'>
-      <p>👍 upvote</p>
-    </div>
-    <div class='upvote {{addClass meme -1 meme.id}}' data-id={{meme.id}} data-value='-1'>
-      <p>👎 downvote</p>
-    </div>
-    <p class ='total-upvotes' id='total-upvotes{{meme.id}}'>Total upvotes: {{reducer meme.upvotes}}</p>
-  </div>
-
-  <div id="comments{{meme.id}}">
-    <h5 class=comment> Comments: </h5>
-    <form class="create-comment comment" data-id="{{meme.id}}">
-      <label for="comment-on-{{meme.id}}">Add a comment: </label>
-      <input name="comment[message]" class='comment' id="comment-on-{{meme.id}}" type=text style="width: 100%;" placeholder='enter your comment'>
-      <input name="comment[meme_id]" value={{meme.id}} type=text style="display: none;">
-      <button class="btn btn-primary submit-comment">Submit comment</button>
-    </form>
-  {{#each comments as |comment|}}
-    {{log comment}}
-      <p class=comment>{{comment.user.email}}: {{comment.message}} || posted: {{limit comment.created_at 10}}</p>
-  {{/each}}
-  </div>
-
+  </section>
 {{/each}}
