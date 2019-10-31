@@ -4,6 +4,7 @@ const ui = require('../memes/ui')
 
 const onSignInSuccess = function (formData) {
   store.user = formData.user
+  store.global = true
   $('#user-auth')[0].reset()
   $('#message-display').text(`Welcome, ${store.user.email}`).addClass('animated bounceInRight')
   setTimeout(() => $('#message-display').removeClass('animated bounceInRight'), 1000)
