@@ -144,7 +144,7 @@ const generateMeme = function (event) {
 
     api.postMeme(formData)
       .then(updateUserMemes)
-      .then(api.getMyMemes)
+      .then(api.getGlobalMemes)
       .then(ui.displayMemes)
       .then(activateButtons)
       .then(ui.scrollToMemes)
