@@ -19,8 +19,10 @@ This application allows a user to sign up for an account and generate memes to s
 ### Important Links:
 
   Deployed API: https://dashboard.heroku.com/apps/rocky-atoll-42611
+  API Github repo: https://github.com/asooge/project_2_api
 
   Deployed client: https://asooge.github.io/bazaarMemes/
+  Client Github repo: https://github.com/asooge/bazaarMemes
 
 ### Planning and development process:
   Began planning with a basic wireframe for the general layout of the page. I wanted to start with a simple design that was easy for the user to learn how to use the page. Once I had the wireframes, I began work on how I would display the memes using only html and css. I wanted the memes to be responsive to the size of the page, but also to have the same look and proportions no matter what size. Once I had the css to display a meme the way I wanted, I was confident in moving forward I could display any meme given the image url, top text, bottom text, and top and bottom text size.
