@@ -1,5 +1,6 @@
 const store = require('../store')
 const ui = require('../memes/ui')
+const memeEvents = require('../memes/events')
 
 
 const onSignInSuccess = function (formData) {
@@ -14,6 +15,7 @@ const onSignInSuccess = function (formData) {
   $('#sign-up, #sign-in').hide()
   $('#change-pass, #sign-out').show()
   $('#modal-center').modal('toggle')
+  memeEvents.showMemesOnSignIn()
 }
 
 const onSignInFailure = function () {

@@ -29,6 +29,13 @@ const showGlobalMemes = function () {
   }
 }
 
+const showMemesOnSignIn = function () {
+  api.getGlobalMemes()
+    .then(ui.displayMemes)
+    .then(activateButtons)
+    .catch(console.error)
+}
+
 const activateButtons = function () {
   $('.delete-meme').on('click', deleteMeme)
   $('.update-meme').on('click', ui.updateMeme)
@@ -231,5 +238,6 @@ module.exports = {
   showMemes,
   generateMeme,
   showGlobalMemes,
-  updateSort
+  updateSort,
+  showMemesOnSignIn
 }
